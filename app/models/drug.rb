@@ -4,4 +4,5 @@ class Drug < ApplicationRecord
   	has_many :diseases, through: :drug_diseases
   	has_many :drug_diseases, dependent: :destroy
   	has_many :trials, dependent: :destroy
+  	belongs_to :company
 end

@@ -11,5 +11,11 @@ Rails.application.routes.draw do
   get 'users/show'
 
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root 'application#index'
+
+  #Provides default path for signed in users
+  match 'user_root' => 'users#show', as: :user_root, via: :all
+  match '/users/sign_in' => 'home#index', via: :all
+
 end

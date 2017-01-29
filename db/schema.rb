@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170122172058) do
+ActiveRecord::Schema.define(version: 20170129223335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,9 @@ ActiveRecord::Schema.define(version: 20170122172058) do
     t.text     "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "trial_id"
     t.index ["status_id"], name: "index_phases_on_status_id", using: :btree
+    t.index ["trial_id"], name: "index_phases_on_trial_id", using: :btree
   end
 
   create_table "statuses", force: :cascade do |t|
@@ -93,7 +95,6 @@ ActiveRecord::Schema.define(version: 20170122172058) do
   end
 
   create_table "trials", force: :cascade do |t|
-    t.integer  "phase_id"
     t.integer  "drug_id"
     t.text     "gov_url"
     t.integer  "company_id"
@@ -102,7 +103,6 @@ ActiveRecord::Schema.define(version: 20170122172058) do
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_trials_on_company_id", using: :btree
     t.index ["drug_id"], name: "index_trials_on_drug_id", using: :btree
-    t.index ["phase_id"], name: "index_trials_on_phase_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -128,9 +128,9 @@ ActiveRecord::Schema.define(version: 20170122172058) do
   add_foreign_key "drug_diseases", "diseases"
   add_foreign_key "drug_diseases", "drugs"
   add_foreign_key "phases", "statuses"
+  add_foreign_key "phases", "trials"
   add_foreign_key "stocks", "stock_markets"
   add_foreign_key "stocks", "stock_types"
   add_foreign_key "trials", "companies"
   add_foreign_key "trials", "drugs"
-  add_foreign_key "trials", "phases"
 end
