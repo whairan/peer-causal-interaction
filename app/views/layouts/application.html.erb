@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Transparency</title>
+    <title>Project Transparency</title>
     <%= csrf_meta_tags %>
-
+	<script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag :transparency %>
+
   </head>
 
   <body>
     <%= yield %>
+
+    <br/><br/>
+	<footer class="footer">
+	  <div class="container">
+	    <p class="text-muted">&copy; The Transparency Project 2017</p>
+	  </div>
+	</footer>
   </body>
 </html>

@@ -1,1 +1,49 @@
-Hello World!
+<!--                        HEADER                      -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <%= render "partials/navbar_header" %>
+  <div class="collapse navbar-collapse">
+    <%= render partial: "partials/home_header" %>
+  </div>
+</nav>
+<!-- *********** -->
+
+<!--                               CONTENT                -->
+<main class="bs-docs-masthead" id="content" tabindex="-1"> 
+  <div class="container pagepad page-wrapper">
+    <img src="assets/logo_2.jpg" alt="Transparency" class="img-thumbnail"><br/>
+    <strong class="logo_text" style="font-size: 55px !important;">The Transparency Project</strong>
+    <p class="lead">.......</p> 
+    <p class="lead"> 
+      <a href="#aboutModal" data-toggle="modal" class="btn btn-outline-inverse btn-lg"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Get Started</a>
+    </p> 
+  </div> 
+</main>
+<%= render "partials/flash" %>
+
+<div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title"><i class="fa fa-train" aria-hidden="true"></i> Latest Drug Trials <span class="badge">4</span>
+        
+        </h4>
+      </div>
+      <div class="panel-body">
+      <div class="table-responsive tableItem">
+        <table id="table" class="table table-hover table-striped tablesorter">
+          <thead>
+            <tr>
+              <th>Last Update  <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+		      <th>Origin  <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+		      <th>Trip  <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+		      <th>Destination  <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+		      <th>ScheduledTime  <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+		      <th>Lateness  <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+		      <th>Track  <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+		      <th>Status  <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
