@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>Phase</th>
       <th>Drug</th>
       <th>Gov url</th>
       <th>Company</th>
@@ -17,7 +16,6 @@
   <tbody>
     <% @trials.each do |trial| %>
       <tr>
-        <td><%= trial.phase %></td>
         <td><%= trial.drug %></td>
         <td><%= trial.gov_url %></td>
         <td><%= trial.company %></td>
