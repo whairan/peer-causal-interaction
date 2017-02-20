@@ -12,13 +12,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
- #Set root to sign-in page
-  devise_scope :user do
-    root to: "devise/sessions#new"
-  end
+  root 'application#index'
 
   #Provides default path for signed in users
   match 'user_root' => 'users#show', as: :user_root, via: :all
-  match '/users/sign_in' => 'home#index', via: :all
+  match '/users/sign_in' => "devise/sessions#new", via: :all
 
 end

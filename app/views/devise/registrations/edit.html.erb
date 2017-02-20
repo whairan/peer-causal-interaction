@@ -1,43 +1,104 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<!--                        HEADER                      -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <%= render "partials/navbar_header" %>
+  <div class="collapse navbar-collapse">
+    <%= render partial: "partials/home_header" %>
   </div>
+</nav>
+<!-- *********** -->
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+
+
+<div class="container content page-wrapper pagepad">
+
+  <%= render "partials/flash" %>
+
+  <% if @user.errors.any? %>
+    <%= render partial: "partials/create_errors", locals: {object: @user, name:"user"} %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+  <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title"><i class="fa fa-user"></i> Edit <%= resource_name.to_s.humanize %></h4>
+      </div>
+      <div class="panel-body">
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <form class="form-horizontal" role="form">
+          <div class = "row">
+            <div class="form-group ">
+              <div class="col-md-6 stpad">
+                  <%= f.text_field :first_name, class:"form-control", placeholder: "First Name" %>
+              </div>
+              <div class="col-md-6 stpad">
+                  <%= f.text_field :last_name, class: "form-control", placeholder: "LastName"  %>
+              </div>
+            </div>
+          </div>
+          <div class = "row">
+            <div class="form-group">
+              
+              <div class="col-md-12 stpad">
+                  <%= f.email_field :email, class: "form-control ", placeholder:"Email",:autocomplete => "off" %>
+              </div>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+            </div>
+          </div>
+          <div class = "row">
+            <div class="form-group ">
+              <div class="col-md-6 stpad">
+                  <%= f.password_field :password, class: "form-control", placeholder: "New Password - Optional",:autocomplete => "off" %>
+              </div>
+              <div class="col-md-6 stpad">
+                  <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Re-enter New Password - Optional",:autocomplete => "off"%>
+              </div>
+            </div>
+          </div>
+          <div class = "row">
+            <div class="form-group">
+              <div class="col-md-12 stpad">
+                  <%= f.password_field :current_password, class: "form-control", placeholder: "Current Password - we need your current password to confirm your changes",:autocomplete => "off" %>
+              </div>
+            </div>
+          </div>
+          <div class = "row">
+            <div class="form-group">
+              <div class="col-md-12 stpad">
+                  <button role="button" type="submit" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-send"></i> Update Account</button>
+              </div>
+            </div>
+          </div>
+          
+        </form>
+        <% end %>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <h4 class="panel-title"><i class="fa fa-user-times"></i> Cancel My Account</h4>
+      </div>
+      <div class="panel-body">
+        <div class = "row">
+          <div class="col-md-6">
+            UNHAPPY?
+          </div>
+          <div class="col-md-6">
+            <%= button_to 'Cancel My Account', registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger btn-block" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= link_to '<i class="fa fa-left" aria-hidden="true"></i> Go Back'.html_safe, :back, class:"btn btn-success btn-block" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
