@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
 	#Set the current user before anything else
 	def set_user
+		@active = "user"
 		@user = current_user
 	end
 

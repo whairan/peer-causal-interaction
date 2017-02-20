@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  skip_before_action :authenticate_user!, :only => [:index], raise: false
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_user
 
   def index
     render "home/index"
@@ -17,6 +19,13 @@ class ApplicationController < ActionController::Base
 
 
   protected
+  #Set the current user before anything else
+  def set_user
+    @active = nil
+    if current_user
+      @user = current_user
+    end
+  end
 
   #Allow additional parameters
   def configure_permitted_parameters
