@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   skip_before_action :authenticate_user!, :only => [:index], raise: false
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_user
+  
 
   def index
     render "home/index"
@@ -16,6 +17,8 @@ class ApplicationController < ActionController::Base
   def after_updated_account_path_for(resource)
     user_root_path(current_user)
   end
+
+
 
 
   protected

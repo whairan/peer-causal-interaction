@@ -1,5 +1,6 @@
 class PhasesController < ApplicationController
   before_action :set_phase, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
 
   # GET /phases
   # GET /phases.json
@@ -65,6 +66,12 @@ class PhasesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_phase
       @phase = Phase.find(params[:id])
+    end
+
+    #Set the current user before anything else
+    def set_user
+      @active = "phases"
+      @user = current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

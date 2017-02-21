@@ -1,5 +1,6 @@
 class StatusesController < ApplicationController
   before_action :set_status, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
 
   # GET /statuses
   # GET /statuses.json
@@ -65,6 +66,12 @@ class StatusesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_status
       @status = Status.find(params[:id])
+    end
+
+    #Set the current user before anything else
+    def set_user
+      @active = "statuses"
+      @user = current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

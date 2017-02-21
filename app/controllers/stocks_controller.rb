@@ -1,5 +1,6 @@
 class StocksController < ApplicationController
   before_action :set_stock, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
 
   # GET /stocks
   # GET /stocks.json
@@ -65,6 +66,12 @@ class StocksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_stock
       @stock = Stock.find(params[:id])
+    end
+
+    #Set the current user before anything else
+    def set_user
+      @active = "stocks"
+      @user = current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,5 +1,6 @@
 class StockTypesController < ApplicationController
   before_action :set_stock_type, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
 
   # GET /stock_types
   # GET /stock_types.json
@@ -65,6 +66,12 @@ class StockTypesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_stock_type
       @stock_type = StockType.find(params[:id])
+    end
+
+    #Set the current user before anything else
+    def set_user
+      @active = "stock_types"
+      @user = current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

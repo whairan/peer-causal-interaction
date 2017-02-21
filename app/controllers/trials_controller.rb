@@ -1,6 +1,6 @@
 class TrialsController < ApplicationController
   before_action :set_trial, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_user
   # GET /trials
   # GET /trials.json
   def index
@@ -65,6 +65,12 @@ class TrialsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_trial
       @trial = Trial.find(params[:id])
+    end
+
+    #Set the current user before anything else
+    def set_user
+      @active = "trials"
+      @user = current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

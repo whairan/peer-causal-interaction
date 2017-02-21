@@ -1,5 +1,6 @@
 class DrugsController < ApplicationController
   before_action :set_drug, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
 
   # GET /drugs
   # GET /drugs.json
@@ -65,6 +66,12 @@ class DrugsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_drug
       @drug = Drug.find(params[:id])
+    end
+
+    #Set the current user before anything else
+    def set_user
+      @active = "drugs"
+      @user = current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
