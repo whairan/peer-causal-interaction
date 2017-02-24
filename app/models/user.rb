@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   before_save :capitalize_name
 
+
   def capitalize_name
     self.first_name = self.first_name.to_s.capitalize.titleize
     self.last_name = self.last_name.to_s.capitalize.titleize

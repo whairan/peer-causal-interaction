@@ -1,7 +1,9 @@
 class StockTypesController < ApplicationController
   before_action :set_stock_type, only: [:show, :edit, :update, :destroy]
   before_action :set_user
+  load_and_authorize_resource
 
+  
   # GET /stock_types
   # GET /stock_types.json
   def index

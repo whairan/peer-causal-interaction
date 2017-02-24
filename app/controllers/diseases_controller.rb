@@ -1,7 +1,7 @@
 class DiseasesController < ApplicationController
   before_action :set_disease, only: [:show, :edit, :update, :destroy]
   before_action :set_user
-
+  load_and_authorize_resource
   
   # GET /diseases
   # GET /diseases.json

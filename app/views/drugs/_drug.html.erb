@@ -3,7 +3,7 @@
 	<td><%= drug.about %></td>
 	<td><%= link_to '<i class="fa fa-eye" aria-hidden="true"></i> Show'.html_safe, drug, class:"pull-right btn btn-xs btn-info" %></td>
 
-	<% if current_user && (current_user.superadmin_role? || current_user.supervisor_role?) %>
+	<% if can? :manage, drug %>
 	<td><%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_drug_path(drug), class:"pull-right btn btn-xs btn-warning" %></td>
 	<td><%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, drug,
                method: :delete,

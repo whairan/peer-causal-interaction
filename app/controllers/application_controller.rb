@@ -1,9 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  skip_before_action :authenticate_user!, :only => [:index], raise: false
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_user
-  
+
+  rescue_from CanCan::AccessDenied do |exception|
+    if request.env["HTTP_REFERER"].present?
+    redirect_to :back, :alert => exception.message
+    else
+    redirect_to "/", :alert => exception.message
+    end
+  end
 
   def index
     render "home/index"

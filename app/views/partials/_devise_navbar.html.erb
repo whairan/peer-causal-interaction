@@ -23,7 +23,7 @@
 	</ul>
     <ul class="nav navbar-nav navbar-right">
 		<% if @user %>
-			<li><a href="<%=edit_user_registration_path%>" title="Display/Edit Profile"><i class="fa fa-cogs"></i> <%=@user.first_name%></a></li>
+			<li><a href="<%=edit_user_registration_path%>" title="Display/Edit Profile"><i class="fa fa-cogs"></i> My Profile</a></li>
   			<li><a title="Logout" rel="nofollow" data-method="delete" href="/users/sign_out"><i class="fa fa-sign-out"></i> Logout</a></li>
 		<% else %>
 			<li><a href="#signinModal" data-toggle="modal" title="Returning User? Sign In"><i class="fa fa-sign-in"></i> Log In</a></li>

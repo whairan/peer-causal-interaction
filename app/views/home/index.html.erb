@@ -1,7 +1,8 @@
 <%= render partial: "partials/devise_navbar" %>
 
 <!--                               CONTENT                -->
-<main class="bs-docs-masthead" id="content" tabindex="-1"> 
+<main class="bs-docs-masthead"> 
+<%= render "partials/flash" %>
   <div class="container pagepad page-wrapper">
     <img src="assets/logo_2.jpg" alt="Transparency" class="img-thumbnail"><br/>
     <strong class="logo_text" style="font-size: 55px !important;">The Transparency Project</strong>
@@ -11,7 +12,7 @@
     </p> 
   </div> 
 </main>
-<%= render "partials/flash" %>
+
 
   <div class="container content page-wrapper pagepad">
     <div class="panel panel-primary">

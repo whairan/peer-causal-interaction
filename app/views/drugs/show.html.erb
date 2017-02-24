@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= render "partials/flash" %>
 <p>
   <strong>Name:</strong>
   <%= @drug.name %>
@@ -9,6 +9,7 @@
   <strong>About:</strong>
   <%= @drug.about %>
 </p>
+
 
 <%= link_to 'Edit', edit_drug_path(@drug) %> |
 <%= link_to 'Back', drugs_path %>

@@ -1,6 +1,8 @@
 class TrialsController < ApplicationController
   before_action :set_trial, only: [:show, :edit, :update, :destroy]
   before_action :set_user
+  load_and_authorize_resource
+  
   # GET /trials
   # GET /trials.json
   def index

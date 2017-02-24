@@ -1,11 +1,10 @@
 class DrugsController < ApplicationController
-  before_action :set_drug, only: [:show, :edit, :update, :destroy]
   before_action :set_user
-
+  load_and_authorize_resource
+  
   # GET /drugs
   # GET /drugs.json
   def index
-    @drugs = Drug.all
   end
 
   # GET /drugs/1
@@ -15,7 +14,6 @@ class DrugsController < ApplicationController
 
   # GET /drugs/new
   def new
-    @drug = Drug.new
   end
 
   # GET /drugs/1/edit
@@ -25,8 +23,6 @@ class DrugsController < ApplicationController
   # POST /drugs
   # POST /drugs.json
   def create
-    @drug = Drug.new(drug_params)
-
     respond_to do |format|
       if @drug.save
         format.html { redirect_to @drug, notice: 'Drug was successfully created.' }
