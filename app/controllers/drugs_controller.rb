@@ -1,6 +1,7 @@
 class DrugsController < ApplicationController
   before_action :set_user
   load_and_authorize_resource
+  #skip_before_filter :authenticate_user!, only: :index
   
   # GET /drugs
   # GET /drugs.json

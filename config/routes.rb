@@ -12,11 +12,13 @@ Rails.application.routes.draw do
   get 'users/show'
 
   devise_for :users
-
-  root 'application#index'
+  authenticated :user do
+    root :to => 'users#show', as: :authenticated_root
+  end
+  root 'home#index'
 
   #Provides default path for signed in users
   match 'user_root' => 'users#show', as: :user_root, via: :all
-  match '/users/sign_in' => "devise/sessions#new", via: :all
+  match '/users/sign_in' => "devise/sessions#new", as: :login, via: :all
 
 end

@@ -1,18 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  #before_filter :authenticate_user!
   before_action :set_user
 
   rescue_from CanCan::AccessDenied do |exception|
     if request.env["HTTP_REFERER"].present?
-    redirect_to :back, :alert => exception.message
+    redirect_to :back, :alert => "Either you are not logged in or your account is not authorized to access this page."
     else
-    redirect_to "/", :alert => exception.message
+    redirect_to "/", :alert => "Either you are not logged in or your account is not authorized to access this page."
     end
-  end
-
-  def index
-    render "home/index"
   end
 
   #Route to user page on sign-in
@@ -33,6 +30,16 @@ class ApplicationController < ActionController::Base
     @active = nil
     if current_user
       @user = current_user
+    end
+  end
+
+  def authenticate_user!
+    if user_signed_in?
+      super
+    else
+      redirect_to login_path, :warning => 'Please login or sign up to proceed!'
+      ## if you want render 404 page
+      ## render :file => File.join(Rails.root, 'public/404'), :formats => [:html], :status => 404, :layout => false
     end
   end
 
