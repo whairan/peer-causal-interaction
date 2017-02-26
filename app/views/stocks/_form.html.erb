@@ -1,37 +1,28 @@
-<%= form_for(stock) do |f| %>
-  <% if stock.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(stock.errors.count, "error") %> prohibited this stock from being saved:</h2>
 
-      <ul>
-      <% stock.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= form_for(stock) do |f| %>
+  
+  <% if @stock.errors.any? %>
+    <%= render partial: "partials/create_errors", locals: {object: @stock, name:"stock"} %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :ticker %>
-    <%= f.text_field :ticker %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Ticker</span>
+    <%= f.text_field :ticker,class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :stock_market_id %>
-    <%= f.text_field :stock_market_id %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Exchange</span>
+    <%= f.select :stock_market_id, options_for_select(@market_options,:selected=>@stock.stock_market_id),{}, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :stock_type_id %>
-    <%= f.text_field :stock_type_id %>
+
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">About</span>
+    <%= f.text_area :about,class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :about %>
-    <%= f.text_area :about %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <br>
+  <div class="text-center stpad">
+    <button role="button" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-send"></i> Submit</button>
   </div>
 <% end %>

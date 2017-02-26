@@ -14,7 +14,6 @@ Phase.destroy_all
 Status.destroy_all
 DrugDisease.destroy_all
 Stock.destroy_all
-StockType.destroy_all
 StockMarket.destroy_all
 
 #STATUSES
@@ -330,35 +329,44 @@ Disease.find_or_create_by(name:"Transthyretin-mediated Amyloidosis (ATTR Amyloid
 Disease.find_or_create_by(name:"Homozygous Familial Hypercholesterolemia", about:"")
 Disease.find_or_create_by(name:"Hepatitis B, Chronic Hepatitis B, Hepatitis B Infection, HBV", about:"")
 
+#STOCK MARKETS
+#http://www.wikinvest.com/wiki/List_of_Stock_Exchanges?ref=relatedpages
+StockMarket.find_or_create_by(name:'NYSE - NewYork Stock Exchange', country:"United States")
+nasdaq = StockMarket.find_or_create_by(name:'NASDAQ', country:"United States")
+StockMarket.find_or_create_by(name:'London Stock Exchange', country:"United Kingdom")
+StockMarket.find_or_create_by(name:'Tokyo Stock Exchange', country:"Japan")
+StockMarket.find_or_create_by(name:'Frankfurt Stock', country:"Germany")
+
+
 #STOCKS
-acad = Stock.find_or_create_by(ticker:'ACAD')
-albo = Stock.find_or_create_by(ticker:'ALBO')
-auph = Stock.find_or_create_by(ticker:'AUPH')
-crbp = Stock.find_or_create_by(ticker:'CRBP')
-ebio = Stock.find_or_create_by(ticker:'EBIO')
-nvax = Stock.find_or_create_by(ticker:'NVAX')
-regn = Stock.find_or_create_by(ticker:'REGN')
-mcrb = Stock.find_or_create_by(ticker:'MCRB')
-catb = Stock.find_or_create_by(ticker:'CATB')
-srpt = Stock.find_or_create_by(ticker:'SRPT')
-aniik = Stock.find_or_create_by(ticker:'ANIIK')
-shpg = Stock.find_or_create_by(ticker:'SHPG')
-mack = Stock.find_or_create_by(ticker:'MACK')
-sgen = Stock.find_or_create_by(ticker:'SGEN')
-exel = Stock.find_or_create_by(ticker:'EXEL')
-clvs = Stock.find_or_create_by(ticker:'CLVS')
-kite = Stock.find_or_create_by(ticker:'KITE')
-vvus  = Stock.find_or_create_by(ticker:'VVUS')
-gen = Stock.find_or_create_by(ticker:'GEN')
-bstc = Stock.find_or_create_by(ticker:'BSTC')
-zyne = Stock.find_or_create_by(ticker:'ZYNE')
-cala = Stock.find_or_create_by(ticker:'CALA')
-nviv = Stock.find_or_create_by(ticker:'NVIV')
-xbit = Stock.find_or_create_by(ticker:'XBIT')
-blue = Stock.find_or_create_by(ticker:'BLUE')
-agio = Stock.find_or_create_by(ticker:'AGIO')
-alny = Stock.find_or_create_by(ticker:'ALNY')
-arry = Stock.find_or_create_by(ticker:'ARRY')
+acad = Stock.find_or_create_by(ticker:'ACAD',stock_market_id:nasdaq.id)
+albo = Stock.find_or_create_by(ticker:'ALBO',stock_market_id:nasdaq.id)
+auph = Stock.find_or_create_by(ticker:'AUPH',stock_market_id:nasdaq.id)
+crbp = Stock.find_or_create_by(ticker:'CRBP',stock_market_id:nasdaq.id)
+ebio = Stock.find_or_create_by(ticker:'EBIO',stock_market_id:nasdaq.id)
+nvax = Stock.find_or_create_by(ticker:'NVAX',stock_market_id:nasdaq.id)
+regn = Stock.find_or_create_by(ticker:'REGN',stock_market_id:nasdaq.id)
+mcrb = Stock.find_or_create_by(ticker:'MCRB',stock_market_id:nasdaq.id)
+catb = Stock.find_or_create_by(ticker:'CATB',stock_market_id:nasdaq.id)
+srpt = Stock.find_or_create_by(ticker:'SRPT',stock_market_id:nasdaq.id)
+aniik = Stock.find_or_create_by(ticker:'ANIIK',stock_market_id:nasdaq.id)
+shpg = Stock.find_or_create_by(ticker:'SHPG',stock_market_id:nasdaq.id)
+mack = Stock.find_or_create_by(ticker:'MACK',stock_market_id:nasdaq.id)
+sgen = Stock.find_or_create_by(ticker:'SGEN',stock_market_id:nasdaq.id)
+exel = Stock.find_or_create_by(ticker:'EXEL',stock_market_id:nasdaq.id)
+clvs = Stock.find_or_create_by(ticker:'CLVS',stock_market_id:nasdaq.id)
+kite = Stock.find_or_create_by(ticker:'KITE',stock_market_id:nasdaq.id)
+vvus  = Stock.find_or_create_by(ticker:'VVUS',stock_market_id:nasdaq.id)
+gen = Stock.find_or_create_by(ticker:'GEN',stock_market_id:nasdaq.id)
+bstc = Stock.find_or_create_by(ticker:'BSTC',stock_market_id:nasdaq.id)
+zyne = Stock.find_or_create_by(ticker:'ZYNE',stock_market_id:nasdaq.id)
+cala = Stock.find_or_create_by(ticker:'CALA',stock_market_id:nasdaq.id)
+nviv = Stock.find_or_create_by(ticker:'NVIV',stock_market_id:nasdaq.id)
+xbit = Stock.find_or_create_by(ticker:'XBIT',stock_market_id:nasdaq.id)
+blue = Stock.find_or_create_by(ticker:'BLUE',stock_market_id:nasdaq.id)
+agio = Stock.find_or_create_by(ticker:'AGIO',stock_market_id:nasdaq.id)
+alny = Stock.find_or_create_by(ticker:'ALNY',stock_market_id:nasdaq.id)
+arry = Stock.find_or_create_by(ticker:'ARRY',stock_market_id:nasdaq.id)
 
 #COMPANIES
 Company.find_or_create_by(stock_id:acad.id, name:'Acadia Pharmaceuticals', address:'3611 Valley Centre Drive, Suite 300 San Diego, CA 92130',url:'http://www.acadia-pharm.com/contact/')

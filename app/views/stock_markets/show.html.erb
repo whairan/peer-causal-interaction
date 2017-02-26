@@ -1,14 +1,27 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @stock_market.name %>
-</p>
 
-<p>
-  <strong>About:</strong>
-  <%= @stock_market.about %>
-</p>
 
-<%= link_to 'Edit', edit_stock_market_path(@stock_market) %> |
-<%= link_to 'Back', stock_markets_path %>
+<%= render partial: "partials/devise_navbar" %>
+
+<div class="container content page-wrapper pagepad">
+  <%= render "partials/flash" %>
+  <p id="notice"><%= notice %></p>
+  <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title"><i class="fa fa-usd" aria-hidden="true"></i> Stock Exchange
+
+        <% if can? :manage, @stock_market %>
+        <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i> Edit Exchange'.html_safe, edit_stock_market_path(@stock_market), class:"pull-right btn btn-success" %>
+        <% end %>
+        
+        </h4>
+      </div>
+      <div class="panel-body">
+      <h4><%= @stock_market.name %></h4>
+      <p>Country: <%= @stock_market.country %></p>
+      <p>About: <%= @stock_market.about %></p>
+      </div>
+    </div>
+  <br>
+  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Stocks'.html_safe, stocks_path, class:"btn btn-primary" %>
+</div>

@@ -1,0 +1,16 @@
+<tr>
+	<td><%= stock_market.name %></td>
+	<td><%= stock_market.country %></td>
+	<%= stock_market.about %>
+	<td><%= link_to '<i class="fa fa-eye" aria-hidden="true"></i> Show'.html_safe, stock_market, class:"pull-right btn btn-xs btn-info" %></td>
+
+	<% if can? :manage, stock_market %>
+	<td><%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_stock_market_path(stock_market), class:"pull-right btn btn-xs btn-warning" %></td>
+	<td><%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, stock_market,
+               method: :delete,
+               data: { confirm: 'Are you sure?' }, class:"pull-right btn btn-xs btn-danger" %></td>
+
+	<% end %>
+
+
+</tr>

@@ -1,0 +1,22 @@
+<tr>
+	<td><%= stock.ticker %></td>
+	<td>---</td>
+	<td>
+		<% if stock.stock_market_id %>
+	      <% market = StockMarket.find(stock.stock_market_id) %>
+	      <a href="<%= stock_market_url(market) %>" target="_blank"><%= market.name %></a>
+
+	    <% end %>
+	</td>
+	<td><%= link_to '<i class="fa fa-eye" aria-hidden="true"></i> Show'.html_safe, stock, class:"pull-right btn btn-xs btn-info" %></td>
+
+	<% if can? :manage, stock %>
+	<td><%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_stock_path(stock), class:"pull-right btn btn-xs btn-warning" %></td>
+	<td><%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, stock,
+               method: :delete,
+               data: { confirm: 'Are you sure?' }, class:"pull-right btn btn-xs btn-danger" %></td>
+
+	<% end %>
+
+
+</tr>

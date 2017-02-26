@@ -8,6 +8,7 @@ class StocksController < ApplicationController
   # GET /stocks.json
   def index
     @stocks = Stock.all
+    @stock_markets = StockMarket.all
   end
 
   # GET /stocks/1
@@ -22,6 +23,7 @@ class StocksController < ApplicationController
 
   # GET /stocks/1/edit
   def edit
+    @market_options = [["Select Stock Market",nil]] + StockMarket.all.map {|st| [st.name, st.id]}
   end
 
   # POST /stocks
