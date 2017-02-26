@@ -17,8 +17,8 @@
     <% @stocks.each do |stock| %>
       <tr>
         <td><%= stock.ticker %></td>
-        <td><%= stock.stock_market %></td>
-        <td><%= stock.stock_type %></td>
+        <td><%= stock.stock_market_id %></td>
+        <td><%= stock.stock_type_id %></td>
         <td><%= stock.about %></td>
         <td><%= link_to 'Show', stock %></td>
         <td><%= link_to 'Edit', edit_stock_path(stock) %></td>

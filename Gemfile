@@ -25,6 +25,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 gem 'font-awesome-sass'
 gem "auto_strip_attributes", "~> 2.1"
+gem 'data-confirm-modal'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

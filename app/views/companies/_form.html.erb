@@ -1,42 +1,37 @@
-<%= form_for(company) do |f| %>
-  <% if company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
 
-      <ul>
-      <% company.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= form_for(company) do |f| %>
+  
+  <% if @company.errors.any? %>
+    <%= render partial: "partials/create_errors", locals: {object: @company, name:"company"} %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Name</span>
+    <%= f.text_field :name,class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :url %>
-    <%= f.text_field :url %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Website</span>
+    <%= f.text_field :url,class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :stock_id %>
-    <%= f.text_field :stock_id %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Stock</span>
+    <%= f.select :stock_id, options_for_select(@stock_options,:selected=>@company.stock_id),{}, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :about %>
-    <%= f.text_area :about %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Address</span>
+    <%= f.text_area :address,class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :address %>
-    <%= f.text_area :address %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">About</span>
+    <%= f.text_area :about,class:"form-control" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <br>
+  <div class="text-center stpad">
+    <button role="button" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-send"></i> Submit</button>
   </div>
 <% end %>

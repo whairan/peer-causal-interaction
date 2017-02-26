@@ -1,29 +1,34 @@
-<p id="notice"><%= notice %></p>
+<%= render partial: "partials/devise_navbar" %>
 
-<h1>Diseases</h1>
+<div class="container content page-wrapper pagepad">
+  <%= render "partials/flash" %>
+  <p id="notice"><%= notice %></p>
+  <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title"><i class="fa fa-user-md" aria-hidden="true"></i> Diseases<span class="badge"><%=@diseases.count%></span>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>About</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @diseases.each do |disease| %>
-      <tr>
-        <td><%= disease.name %></td>
-        <td><%= disease.about %></td>
-        <td><%= link_to 'Show', disease %></td>
-        <td><%= link_to 'Edit', edit_disease_path(disease) %></td>
-        <td><%= link_to 'Destroy', disease, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Disease', new_disease_path %>
+        <% if can? :manage, Disease %>
+        <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i> Create New Disease'.html_safe, new_disease_path, class:"pull-right btn btn-success" %>
+        <% end %>
+        
+        </h4>
+      </div>
+      <div class="panel-body">
+      <div class="table-responsive tableItem">
+        <table id="table" class="table table-hover table-striped tablesorter">
+          <thead>
+            <tr>
+              <th>Name <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+              <th>About <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @diseases%>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+  <br>
+</div>

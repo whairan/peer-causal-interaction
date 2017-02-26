@@ -1,0 +1,15 @@
+<tr>
+	<td><%= disease.name %></td>
+	<td><%= disease.about %></td>
+	<td><%= link_to '<i class="fa fa-eye" aria-hidden="true"></i> Show'.html_safe, disease, class:"pull-right btn btn-xs btn-info" %></td>
+
+	<% if can? :manage, disease %>
+	<td><%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_disease_path(disease), class:"pull-right btn btn-xs btn-warning" %></td>
+	<td><%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, disease,
+               method: :delete,
+               data: { confirm: 'Are you sure?' }, class:"pull-right btn btn-xs btn-danger" %></td>
+
+	<% end %>
+
+
+</tr>

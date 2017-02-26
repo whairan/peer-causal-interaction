@@ -1,27 +1,22 @@
-<%= form_for(disease) do |f| %>
-  <% if disease.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(disease.errors.count, "error") %> prohibited this disease from being saved:</h2>
 
-      <ul>
-      <% disease.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= form_for(disease) do |f| %>
+  
+  <% if @disease.errors.any? %>
+    <%= render partial: "partials/create_errors", locals: {object: @disease, name:"disease"} %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Name</span>
+    <%= f.text_field :name,class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :about %>
-    <%= f.text_area :about %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">About</span>
+    <%= f.text_area :about,class:"form-control" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <br>
+  <div class="text-center stpad">
+    <button role="button" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-send"></i> Submit</button>
   </div>
 <% end %>

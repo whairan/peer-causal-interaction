@@ -1,0 +1,27 @@
+<tr>
+	<td>
+	<% if company.url %>
+		<a href="<%= company.url %>" target="_blank"><%= company.name %></a>
+	<% else %>
+		<%= company.name %>
+	<% end %>
+	</td>
+	<td>
+		<% if company.stock_id %>
+	      <% stock = Stock.find(company.stock_id) %>
+	      <a href="<%= stock_url(stock) %>" target="_blank"><i class="fa fa-usd" aria-hidden="true"></i><%= stock.ticker %></a>
+
+	    <% end %>
+	</td>
+	<td><%= link_to '<i class="fa fa-eye" aria-hidden="true"></i> Show'.html_safe, company, class:"pull-right btn btn-xs btn-info" %></td>
+
+	<% if can? :manage, company %>
+	<td><%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_company_path(company), class:"pull-right btn btn-xs btn-warning" %></td>
+	<td><%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, company,
+               method: :delete,
+               data: { confirm: 'Are you sure?' }, class:"pull-right btn btn-xs btn-danger" %></td>
+
+	<% end %>
+
+
+</tr>

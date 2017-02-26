@@ -21,6 +21,7 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1/edit
   def edit
+    @stock_options = [["Select Stock",nil]] + Stock.all.map {|st| [st.ticker, st.id]}
   end
 
   # POST /companies

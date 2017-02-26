@@ -5,7 +5,6 @@ class Stock < ApplicationRecord
 
   auto_strip_attributes :ticker, :about, :squish => true
   validates :ticker, presence: true, uniqueness: true
-  validates :stock_market_id, presence: true
 
   before_save :capitalize_ticker
 

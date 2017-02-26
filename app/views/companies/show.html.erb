@@ -1,29 +1,33 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @company.name %>
-</p>
+<%= render partial: "partials/devise_navbar" %>
 
-<p>
-  <strong>Url:</strong>
-  <%= @company.url %>
-</p>
+<div class="container content page-wrapper pagepad">
+  <%= render "partials/flash" %>
+  <p id="notice"><%= notice %></p>
+  <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title"><i class="fa fa-building" aria-hidden="true"></i> Company 
 
-<p>
-  <strong>Stock:</strong>
-  <%= @company.stock %>
-</p>
-
-<p>
-  <strong>About:</strong>
-  <%= @company.about %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @company.address %>
-</p>
-
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+        <% if can? :manage, @company %>
+        <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i> Edit Company'.html_safe, edit_company_path(@company), class:"pull-right btn btn-success" %>
+        <% end %>
+        
+        </h4>
+      </div>
+      <div class="panel-body">
+      <h4><%= @company.name %> 
+        <% if @company.stock_id %>
+          <% stock = Stock.find(@company.stock_id) %>
+          <a href="<%= stock_url(stock) %>" target="_blank"><i class="fa fa-usd" aria-hidden="true"></i><%= stock.ticker %></a>
+        <% end %>
+      </h4>
+      <p><i class="fa fa-link" aria-hidden="true"></i> <%= @company.url %></p>
+      <p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= @company.address %></p>
+      <% if @company.about %>
+        <p><i class="fa fa-info-circle" aria-hidden="true"></i> <%= @company.about %></p>
+      <% end %>
+      </div>
+    </div>
+  <br>
+  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Companies'.html_safe, companies_path, class:"btn btn-primary" %>
+</div>

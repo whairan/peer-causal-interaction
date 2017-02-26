@@ -7,7 +7,7 @@
       <div class="panel-heading">
         <h4 class="panel-title"><i class="fa fa-medkit" aria-hidden="true"></i> Drugs <span class="badge"><%=@drugs.count%></span>
 
-        <% if current_user && (current_user.superadmin_role? || current_user.supervisor_role?) %>
+        <% if can? :manage, Drug %>
         <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i> Create New Drug'.html_safe, new_drug_path, class:"pull-right btn btn-success" %>
         <% end %>
         

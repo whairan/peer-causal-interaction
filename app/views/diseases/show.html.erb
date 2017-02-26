@@ -1,14 +1,25 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @disease.name %>
-</p>
 
-<p>
-  <strong>About:</strong>
-  <%= @disease.about %>
-</p>
+<%= render partial: "partials/devise_navbar" %>
 
-<%= link_to 'Edit', edit_disease_path(@disease) %> |
-<%= link_to 'Back', diseases_path %>
+<div class="container content page-wrapper pagepad">
+  <%= render "partials/flash" %>
+  <p id="notice"><%= notice %></p>
+  <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title"><i class="fa fa-user-md" aria-hidden="true"></i> Disease 
+
+        <% if can? :manage, @disease %>
+        <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i> Edit Disease'.html_safe, edit_disease_path(@disease), class:"pull-right btn btn-success" %>
+        <% end %>
+        
+        </h4>
+      </div>
+      <div class="panel-body">
+      <h4><%= @disease.name %></h4>
+      <p><%= @disease.about %></p>
+      </div>
+    </div>
+  <br>
+  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Drugs'.html_safe, diseases_path, class:"btn btn-primary" %>
+</div>
