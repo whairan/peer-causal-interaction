@@ -1,29 +1,35 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Stock Markets</h1>
+<%= render partial: "partials/devise_navbar" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>About</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container content page-wrapper pagepad">
+  <%= render "partials/flash" %>
+  <p id="notice"><%= notice %></p>
+  <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title"><i class="fa fa-usd" aria-hidden="true"></i> Markets/Exchanges <span class="badge"><%=@stock_markets.count%></span>
 
-  <tbody>
-    <% @stock_markets.each do |stock_market| %>
-      <tr>
-        <td><%= stock_market.name %></td>
-        <td><%= stock_market.about %></td>
-        <td><%= link_to 'Show', stock_market %></td>
-        <td><%= link_to 'Edit', edit_stock_market_path(stock_market) %></td>
-        <td><%= link_to 'Destroy', stock_market, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Stock Market', new_stock_market_path %>
+        <% if can? :manage, StockMarket %>
+        <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i> Create New Exchange'.html_safe, new_stock_market_path, class:"pull-right btn btn-success" %>
+        <% end %>
+        
+        </h4>
+      </div>
+      <div class="panel-body">
+      <div class="table-responsive tableItem">
+        <table id="table" class="table table-hover table-striped tablesorter">
+          <thead>
+            <tr>
+              <th>Name <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+              <th>Country <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+              <th>About <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial:"stock_markets/stock_market", collection: @stock_markets%>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+</div>

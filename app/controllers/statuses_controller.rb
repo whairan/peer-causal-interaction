@@ -1,5 +1,4 @@
 class StatusesController < ApplicationController
-  before_action :set_status, only: [:show, :edit, :update, :destroy]
   before_action :set_user
   load_and_authorize_resource
 
@@ -7,7 +6,6 @@ class StatusesController < ApplicationController
   # GET /statuses
   # GET /statuses.json
   def index
-    @statuses = Status.all
   end
 
   # GET /statuses/1
@@ -17,7 +15,6 @@ class StatusesController < ApplicationController
 
   # GET /statuses/new
   def new
-    @status = Status.new
   end
 
   # GET /statuses/1/edit
@@ -65,10 +62,6 @@ class StatusesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_status
-      @status = Status.find(params[:id])
-    end
 
     #Set the current user before anything else
     def set_user

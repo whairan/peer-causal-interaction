@@ -60,10 +60,6 @@ class DrugsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_drug
-      @drug = Drug.find(params[:id])
-    end
 
     #Set the current user before anything else
     def set_user

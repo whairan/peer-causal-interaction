@@ -1,37 +1,37 @@
-<%= form_for(trial) do |f| %>
-  <% if trial.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(trial.errors.count, "error") %> prohibited this trial from being saved:</h2>
 
-      <ul>
-      <% trial.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= form_for(trial) do |f| %>
+  
+  <% if @trial.errors.any? %>
+    <%= render partial: "partials/create_errors", locals: {object: @trial, name:"trial"} %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :drug_id %>
-    <%= f.text_field :drug_id %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Drug</span>
+    <%= f.select :drug_id, options_for_select(@drug_options,:selected=>@trial.drug_id),{}, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :gov_url %>
-    <%= f.text_area :gov_url %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Disease</span>
+    <%= f.select :disease_id, options_for_select(@disease_options,:selected=>@trial.disease_id),{}, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :company_id %>
-    <%= f.text_field :company_id %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Company</span>
+    <%= f.select :company_id, options_for_select(@company_options,:selected=>@trial.company_id),{}, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :about %>
-    <%= f.text_area :about %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Gov URL</span>
+    <%= f.text_field :gov_url,class:"form-control" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">About</span>
+    <%= f.text_area :about,class:"form-control" %>
+  </div>
+
+  <br>
+  <div class="text-center stpad">
+    <button role="button" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-send"></i> Submit</button>
   </div>
 <% end %>

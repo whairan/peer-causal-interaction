@@ -1,5 +1,18 @@
-<h1>New Stock</h1>
 
-<%= render 'form', stock: @stock %>
+<%= render partial: "partials/devise_navbar" %>
 
-<%= link_to 'Back', stocks_path %>
+<div class="container content page-wrapper pagepad">
+  <%= render "partials/flash" %>
+  <p id="notice"><%= notice %></p>
+  <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title"><i class="fa fa-usd" aria-hidden="true"></i> New Stock 
+        </h4>
+      </div>
+      <div class="panel-body">
+      	<%= render 'form', stock: @stock %>
+      </div>
+    </div>
+  <br>
+  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Cancel'.html_safe, stocks_path, class:"btn btn-primary" %>
+</div>

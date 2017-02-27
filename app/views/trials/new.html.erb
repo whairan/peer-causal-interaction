@@ -1,5 +1,17 @@
-<h1>New Trial</h1>
+<%= render partial: "partials/devise_navbar" %>
 
-<%= render 'form', trial: @trial %>
-
-<%= link_to 'Back', trials_path %>
+<div class="container content page-wrapper pagepad">
+  <%= render "partials/flash" %>
+  <p id="notice"><%= notice %></p>
+  <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title"><i class="fa fa-flask" aria-hidden="true"></i> New Trial 
+        </h4>
+      </div>
+      <div class="panel-body">
+      	<%= render 'form', trial: @trial %>
+      </div>
+    </div>
+  <br>
+  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Cancel'.html_safe, trials_path, class:"btn btn-primary" %>
+</div>

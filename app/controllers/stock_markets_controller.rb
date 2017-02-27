@@ -1,5 +1,4 @@
 class StockMarketsController < ApplicationController
-  before_action :set_stock_market, only: [:show, :edit, :update, :destroy]
   before_action :set_user
   load_and_authorize_resource
 
@@ -7,7 +6,6 @@ class StockMarketsController < ApplicationController
   # GET /stock_markets
   # GET /stock_markets.json
   def index
-    @stock_markets = StockMarket.all
   end
 
   # GET /stock_markets/1
@@ -17,7 +15,6 @@ class StockMarketsController < ApplicationController
 
   # GET /stock_markets/new
   def new
-    @stock_market = StockMarket.new
   end
 
   # GET /stock_markets/1/edit
@@ -65,10 +62,6 @@ class StockMarketsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_stock_market
-      @stock_market = StockMarket.find(params[:id])
-    end
 
     #Set the current user before anything else
     def set_user

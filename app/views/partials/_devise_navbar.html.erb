@@ -20,7 +20,6 @@
 		<li class="<%='active' if @active=="diseases"%>"><a href="<%= diseases_path(@user) %>"><i class="fa fa-user-md"></i> Diseases</a></li>
 		<% if @user && (@user.supervisor_role? || @user.superadmin_role?) %>
 			<li class="<%='active' if @active=="stocks"%>"><a href="<%= stocks_path(@user) %>"><i class="fa fa-usd"></i> Stocks</a></li>
-			<li class="<%='active' if @active=="phases"%>"><a href="<%= phases_path(@user) %>"><i class="fa fa-hourglass-half"></i> Trial Phases</a></li>
 			<li class="<%='active' if @active=="statuses"%>"><a href="<%= statuses_path(@user) %>"><i class="fa fa-step-forward"></i> Phase Statuses</a></li>
 		<% end %>
 

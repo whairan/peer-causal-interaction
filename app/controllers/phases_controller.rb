@@ -1,12 +1,10 @@
 class PhasesController < ApplicationController
-  before_action :set_phase, only: [:show, :edit, :update, :destroy]
   before_action :set_user
   load_and_authorize_resource
   
   # GET /phases
   # GET /phases.json
   def index
-    @phases = Phase.all
   end
 
   # GET /phases/1
@@ -16,7 +14,6 @@ class PhasesController < ApplicationController
 
   # GET /phases/new
   def new
-    @phase = Phase.new
   end
 
   # GET /phases/1/edit
@@ -64,10 +61,6 @@ class PhasesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_phase
-      @phase = Phase.find(params[:id])
-    end
 
     #Set the current user before anything else
     def set_user

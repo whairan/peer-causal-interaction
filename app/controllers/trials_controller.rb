@@ -1,12 +1,10 @@
 class TrialsController < ApplicationController
-  before_action :set_trial, only: [:show, :edit, :update, :destroy]
   before_action :set_user
   load_and_authorize_resource
   
   # GET /trials
   # GET /trials.json
   def index
-    @trials = Trial.all
   end
 
   # GET /trials/1
@@ -16,16 +14,25 @@ class TrialsController < ApplicationController
 
   # GET /trials/new
   def new
-    @trial = Trial.new
+    @drug_options = [["Select Drug",nil]] + Drug.all.map {|st| [st.name, st.id]}
+    @disease_options = [["Select Disease",nil]] + Disease.all.map {|st| [st.name, st.id]}
+    @company_options = [["Select Company",nil]] + Company.all.map {|st| [st.name, st.id]}
   end
 
   # GET /trials/1/edit
   def edit
+    @phases = @trial.phases
+    @drug_options = [["Select Drug",nil]] + Drug.all.map {|st| [st.name, st.id]}
+    @disease_options = [["Select Disease",nil]] + Disease.all.map {|st| [st.name, st.id]}
+    @company_options = [["Select Company",nil]] + Company.all.map {|st| [st.name, st.id]}
   end
 
   # POST /trials
   # POST /trials.json
   def create
+    @drug_options = [["Select Drug",nil]] + Drug.all.map {|st| [st.name, st.id]}
+    @disease_options = [["Select Disease",nil]] + Disease.all.map {|st| [st.name, st.id]}
+    @company_options = [["Select Company",nil]] + Company.all.map {|st| [st.name, st.id]}
     @trial = Trial.new(trial_params)
 
     respond_to do |format|
@@ -64,10 +71,6 @@ class TrialsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_trial
-      @trial = Trial.find(params[:id])
-    end
 
     #Set the current user before anything else
     def set_user
@@ -77,6 +80,6 @@ class TrialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trial_params
-      params.require(:trial).permit(:phase_id, :drug_id, :gov_url, :company_id, :about)
+      params.require(:trial).permit(:status_id, :disease_id, :start_date, :end_date, :phase_id, :drug_id, :gov_url, :company_id, :about)
     end
 end

@@ -1,6 +1,47 @@
-<h1>Editing Trial</h1>
 
-<%= render 'form', trial: @trial %>
+<%= render partial: "partials/devise_navbar" %>
 
-<%= link_to 'Show', @trial %> |
-<%= link_to 'Back', trials_path %>
+<div class="container content page-wrapper pagepad">
+  <%= render "partials/flash" %>
+  <p id="notice"><%= notice %></p>
+  <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title"><i class="fa fa-flask" aria-hidden="true"></i> Editing Trial 
+        </h4>
+      </div>
+      <div class="panel-body">
+      	<%= render 'form', trial: @trial %>
+      	<hr>
+
+      	<div class="panel panel-success">
+	      <div class="panel-heading">
+	        <h4 class="panel-title"><i class="fa fa-hourglass-half" aria-hidden="true"></i> Trial Phases 
+	        </h4>
+	      </div>
+	      <div class="panel-body">
+	      	<div class="table-responsive tableItem">
+		        <table id="table" class="table table-hover table-striped tablesorter">
+		          <thead>
+		            <tr>
+		              <th>Phase <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+		              <th>Status <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+		              <th>Start <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+		              <th>End <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+		              <th colspan="3"></th>
+		            </tr>
+		          </thead>
+		          <tbody>
+		            <%= render @phases%>
+		          </tbody>
+		        </table>
+		      </div>
+	      </div>
+	    </div>
+
+      </div>
+    </div>
+  <br>
+  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Cancel'.html_safe, trials_path, class:"btn btn-primary" %>
+
+  <td><%= link_to '<i class="fa fa-eye" aria-hidden="true"></i> Show Trial'.html_safe, @trial, class:"btn btn-info" %></td>
+</div>

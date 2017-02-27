@@ -6,7 +6,7 @@
   <div class="container pagepad page-wrapper">
     <img src="assets/logo_2.jpg" alt="Transparency" class="img-thumbnail"><br/>
     <strong class="logo_text" style="font-size: 55px !important;">VestBio</strong>
-    <p class="lead">.......</p> 
+    <p class="lead">The information platform for the biotechnology investors!</p> 
     <p class="lead"> 
       <a href="#aboutModal" data-toggle="modal" class="btn btn-outline-inverse btn-lg"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Get Started</a>
     </p> 
@@ -22,14 +22,8 @@
         </h4>
       </div>
       <div class="panel-body">
-      <div class="table-responsive tableItem">
-        <table id="table" class="table table-hover table-striped tablesorter">
-          <thead>
-            
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
+      <div class="list-group tableItem">
+        <%= render partial: "trials/trial", collection: @trials %>
       </div>
       </div>
     </div>

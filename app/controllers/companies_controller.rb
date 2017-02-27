@@ -1,12 +1,10 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
   before_action :set_user
   load_and_authorize_resource
   
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
   end
 
   # GET /companies/1
@@ -16,7 +14,7 @@ class CompaniesController < ApplicationController
 
   # GET /companies/new
   def new
-    @company = Company.new
+    @stock_options = [["Select Stock",nil]] + Stock.all.map {|st| [st.ticker, st.id]}
   end
 
   # GET /companies/1/edit
@@ -65,10 +63,6 @@ class CompaniesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_company
-      @company = Company.find(params[:id])
-    end
 
     #Set the current user before anything else
     def set_user

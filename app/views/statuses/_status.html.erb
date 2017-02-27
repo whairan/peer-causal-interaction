@@ -1,0 +1,14 @@
+<tr>
+	<td><%= status.name %></td>
+	<%= status.about %>
+
+	<% if can? :manage, status %>
+	<td><%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_status_path(status), class:"pull-right btn btn-xs btn-warning" %></td>
+	<td><%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, status,
+               method: :delete,
+               data: { confirm: 'Are you sure?' }, class:"pull-right btn btn-xs btn-danger" %></td>
+
+	<% end %>
+
+
+</tr>

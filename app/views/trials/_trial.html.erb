@@ -1,0 +1,11 @@
+<a href=<%= trial_path(trial) %> class="list-group-item listItem">
+	<div class="list-group-item-heading">
+	 <strong><%= trial.drug.name %></strong><small> by <%= trial.company.name %></small>
+	</div>
+	<p class="list-group-item-text">Disease: <%= trial.disease.name %></p>
+	<% phases = trial.phases %>
+	<% if phases.count > 0 %>
+		<% phase = phases.last %>
+		<small class="list-group-item-text"><span class="label label-default"></span><%= trial.phase.status.name %><%= trial.phase.start_date %> -- <%= trial.phase.start_date %></small>
+	<% end %>
+</a>
