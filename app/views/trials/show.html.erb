@@ -28,4 +28,32 @@
     </div>
   <br>
   <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Trials'.html_safe, trials_path, class:"btn btn-primary" %>
+
+  <div class="panel panel-success tmargin" >
+    <div class="panel-heading">
+      <h4 class="panel-title"><i class="fa fa-hourglass-half" aria-hidden="true"></i> Trial Phases 
+        <% if can? :manage, Phase %>
+        <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i> New Phase'.html_safe, new_phase_path, class:"pull-right btn btn-success" %>
+        <% end %>
+      </h4>
+    </div>
+    <div class="panel-body">
+      <div class="table-responsive tableItem">
+        <table id="table" class="table table-hover table-striped tablesorter">
+          <thead>
+            <tr>
+              <th>Phase <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+              <th>Status <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+              <th>Start <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+              <th>End <i class="fa fa-sort text-right" aria-hidden="true"></i></th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @phases%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

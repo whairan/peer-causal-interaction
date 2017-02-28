@@ -10,6 +10,7 @@ class TrialsController < ApplicationController
   # GET /trials/1
   # GET /trials/1.json
   def show
+    @phases = @trial.phases
   end
 
   # GET /trials/new

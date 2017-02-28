@@ -6,9 +6,9 @@
   <div class="container pagepad page-wrapper">
     <img src="assets/logo_2.jpg" alt="Transparency" class="img-thumbnail"><br/>
     <strong class="logo_text" style="font-size: 55px !important;">VestBio</strong>
-    <p class="lead">The information platform for the biotechnology investors!</p> 
+    <p class="lead">biotechnology investors</p> 
     <p class="lead"> 
-      <a href="#aboutModal" data-toggle="modal" class="btn btn-outline-inverse btn-lg"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Get Started</a>
+      <a href="<%= new_user_session_url %>" class="btn btn-outline-inverse btn-lg"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Get Started</a>
     </p> 
   </div> 
 </main>
@@ -17,7 +17,7 @@
   <div class="container content page-wrapper pagepad">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h4 class="panel-title"><i class="fa fa-flask" aria-hidden="true"></i> Latest Drug Trials <span class="badge">0</span>
+        <h4 class="panel-title"><i class="fa fa-flask" aria-hidden="true"></i> Latest Drug Trials <span class="badge"><%= @trials.count %></span>
         
         </h4>
       </div>
