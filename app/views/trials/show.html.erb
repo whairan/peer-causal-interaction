@@ -22,7 +22,7 @@
 		<% phases = @trial.phases %>
 		<% if phases.count > 0 %>
 			<% phase = phases.last %>
-			<small class="list-group-item-text"><span class="label label-default"></span><%= trial.phase.status.name %><%= trial.phase.start_date %> -- <%= trial.phase.start_date %></small>
+			<small class="list-group-item-text"><span class="label label-default"></span><%= Status.find(phase.status_id).name %><%= phase.start_date %> -- <%= phase.end_date %></small>
 		<% end %>
       </div>
     </div>
@@ -33,7 +33,7 @@
     <div class="panel-heading">
       <h4 class="panel-title"><i class="fa fa-hourglass-half" aria-hidden="true"></i> Trial Phases 
         <% if can? :manage, Phase %>
-        <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i> New Phase'.html_safe, new_phase_path, class:"pull-right btn btn-success" %>
+        <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i> New Phase'.html_safe, new_trial_phase_path(@trial), class:"pull-right btn btn-success" %>
         <% end %>
       </h4>
     </div>

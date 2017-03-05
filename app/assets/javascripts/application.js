@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require data-confirm-modal
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .

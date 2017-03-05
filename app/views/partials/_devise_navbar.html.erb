@@ -11,7 +11,7 @@
 	</div>
   <div class="collapse navbar-collapse">
   	<ul class="nav navbar-nav">
-  		<% if @user %>
+  		<% if false %>
 		<li class="<%='active' if @active=="user"%>"><a href="<%= user_root_path(@user) %>"><i class="fa fa-home"></i> <%= @user.first_name %></a></li>
 		<% end %>
 		<li class="<%='active' if @active=="trials"%>"><a href="<%= trials_path(@user) %>"><i class="fa fa-flask"></i> Trials</a></li>

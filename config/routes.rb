@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :trials
+  resources :trials do
+    resources :phases
+  end
   resources :companies
   resources :stocks
-  resources :phases
+  
   resources :stock_markets
   resources :statuses
   resources :diseases

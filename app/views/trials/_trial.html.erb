@@ -6,6 +6,6 @@
 	<% phases = trial.phases %>
 	<% if phases.count > 0 %>
 		<% phase = phases.last %>
-		<small class="list-group-item-text"><span class="label label-default"></span><%= trial.phase.status.name %><%= trial.phase.start_date %> -- <%= trial.phase.start_date %></small>
+		<small class="list-group-item-text"><span class="badge">Phase: <%= phase.name %></span> <span class="label label-default"><%= Status.find(phase.status_id).name %></span>  <%= phase.start_date.strftime("%m/%Y") %> -<i class="fa fa-calendar" aria-hidden="true"></i>- <%= phase.end_date.strftime("%m/%Y") %></small>
 	<% end %>
 </a>

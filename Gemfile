@@ -26,6 +26,11 @@ gem 'sass-rails', '>= 3.2'
 gem 'font-awesome-sass'
 gem "auto_strip_attributes", "~> 2.1"
 gem 'data-confirm-modal'
+
+#https://github.com/TrevorS/bootstrap3-datetimepicker-rails
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -36,6 +41,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+gem 'pry-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
