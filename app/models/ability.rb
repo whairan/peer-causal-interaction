@@ -18,16 +18,8 @@ class Ability
       can :dashboard
 
     elsif user.supervisor_role?
-      can :manage, Trial
-      can :manage, Drug
-      can :manage, Company
-      can :manage, Disease
-      can :manage, Phase
-      can :manage, Status
-      can :manage, Stock
-      can :manage, StockMarket
-      can :manage, StockType
-      
+      #can :manage, Trial
+
      else
       can :read, :all
     end

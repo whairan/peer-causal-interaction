@@ -10,103 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227015854) do
+ActiveRecord::Schema.define(version: 20180406143707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "companies", force: :cascade do |t|
-    t.string   "name"
-    t.string   "url"
-    t.integer  "stock_id"
-    t.text     "about"
-    t.text     "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["stock_id"], name: "index_companies_on_stock_id", using: :btree
-  end
-
-  create_table "diseases", force: :cascade do |t|
-    t.string   "name"
-    t.text     "about"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "drug_diseases", force: :cascade do |t|
-    t.integer  "drug_id"
-    t.integer  "disease_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["disease_id"], name: "index_drug_diseases_on_disease_id", using: :btree
-    t.index ["drug_id"], name: "index_drug_diseases_on_drug_id", using: :btree
-  end
-
-  create_table "drugs", force: :cascade do |t|
-    t.string   "name"
-    t.text     "about"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "phases", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "status_id"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.text     "about"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "trial_id"
-    t.index ["status_id"], name: "index_phases_on_status_id", using: :btree
-    t.index ["trial_id"], name: "index_phases_on_trial_id", using: :btree
-  end
-
-  create_table "statuses", force: :cascade do |t|
-    t.string   "name"
-    t.text     "about"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "stock_markets", force: :cascade do |t|
-    t.string   "name"
-    t.text     "about"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "country"
-  end
-
-  create_table "stock_types", force: :cascade do |t|
-    t.string   "name"
-    t.text     "about"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "stocks", force: :cascade do |t|
-    t.string   "ticker"
-    t.integer  "stock_market_id"
-    t.text     "about"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "company_id"
-    t.index ["company_id"], name: "index_stocks_on_company_id", using: :btree
-    t.index ["stock_market_id"], name: "index_stocks_on_stock_market_id", using: :btree
-  end
-
-  create_table "trials", force: :cascade do |t|
-    t.integer  "drug_id"
-    t.text     "gov_url"
-    t.integer  "company_id"
-    t.text     "about"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "disease_id"
-    t.index ["company_id"], name: "index_trials_on_company_id", using: :btree
-    t.index ["disease_id"], name: "index_trials_on_disease_id", using: :btree
-    t.index ["drug_id"], name: "index_trials_on_drug_id", using: :btree
-  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -130,14 +37,4 @@ ActiveRecord::Schema.define(version: 20170227015854) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "companies", "stocks"
-  add_foreign_key "drug_diseases", "diseases"
-  add_foreign_key "drug_diseases", "drugs"
-  add_foreign_key "phases", "statuses"
-  add_foreign_key "phases", "trials"
-  add_foreign_key "stocks", "companies"
-  add_foreign_key "stocks", "stock_markets"
-  add_foreign_key "trials", "companies"
-  add_foreign_key "trials", "diseases"
-  add_foreign_key "trials", "drugs"
 end

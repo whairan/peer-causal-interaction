@@ -12,15 +12,17 @@
   <div class="collapse navbar-collapse">
   	<ul class="nav navbar-nav">
   		<% if false %>
-		<li class="<%='active' if @active=="user"%>"><a href="<%= user_root_path(@user) %>"><i class="fa fa-home"></i> <%= @user.first_name %></a></li>
-		<% end %>
-		<li class="<%='active' if @active=="trials"%>"><a href="<%= trials_path(@user) %>"><i class="fa fa-flask"></i> Trials</a></li>
-		<li class="<%='active' if @active=="companies"%>"><a href="<%= companies_path(@user) %>"><i class="fa fa-building"></i> Companies</a></li>
-		<li class="<%='active' if @active=="drugs"%>"><a href="<%= drugs_path(@user) %>"><i class="fa fa-medkit"></i> Drugs</a></li>
-		<li class="<%='active' if @active=="diseases"%>"><a href="<%= diseases_path(@user) %>"><i class="fa fa-user-md"></i> Diseases</a></li>
-		<% if @user && (@user.supervisor_role? || @user.superadmin_role?) %>
-			<li class="<%='active' if @active=="stocks"%>"><a href="<%= stocks_path(@user) %>"><i class="fa fa-usd"></i> Stocks</a></li>
-			<li class="<%='active' if @active=="statuses"%>"><a href="<%= statuses_path(@user) %>"><i class="fa fa-step-forward"></i> Phase Statuses</a></li>
+	  		<% if false %>
+				<li class="<%='active' if @active=="user"%>"><a href="<%= user_root_path(@user) %>"><i class="fa fa-home"></i> <%= @user.first_name %></a></li>
+			<% end %>
+			<li class="<%='active' if @active=="trials"%>"><a href="<%= trials_path(@user) %>"><i class="fa fa-flask"></i> Trials</a></li>
+			<li class="<%='active' if @active=="companies"%>"><a href="<%= companies_path(@user) %>"><i class="fa fa-building"></i> Companies</a></li>
+			<li class="<%='active' if @active=="drugs"%>"><a href="<%= drugs_path(@user) %>"><i class="fa fa-medkit"></i> Drugs</a></li>
+			<li class="<%='active' if @active=="diseases"%>"><a href="<%= diseases_path(@user) %>"><i class="fa fa-user-md"></i> Diseases</a></li>
+			<% if @user && (@user.supervisor_role? || @user.superadmin_role?) %>
+				<li class="<%='active' if @active=="stocks"%>"><a href="<%= stocks_path(@user) %>"><i class="fa fa-usd"></i> Stocks</a></li>
+				<li class="<%='active' if @active=="statuses"%>"><a href="<%= statuses_path(@user) %>"><i class="fa fa-step-forward"></i> Phase Statuses</a></li>
+			<% end %>
 		<% end %>
 
 	</ul>
