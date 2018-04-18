@@ -8,7 +8,7 @@ class CreateReports < ActiveRecord::Migration[5.0]
       t.integer :sleep
       t.integer :exercise
       t.integer :meals
-      t.references :feedback, foreign_key: true
+      t.integer :feedback_id, foreign_key: true
 
       t.timestamps
     end

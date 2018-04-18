@@ -4,23 +4,38 @@
   <%= render "partials/flash" %>
   <div class="panel panel-primary">
       <div class="panel-heading">
-        <h4 class="panel-title"><i class="fa fa-train" aria-hidden="true"></i> Followed Trials 
+        <h4 class="panel-title"><i class="fa fa-train" aria-hidden="true"></i> Welcome to MCI 
         </h4>
       </div>
       <div class="panel-body">
-      <div class="table-responsive tableItem">
-        <table id="table" class="table table-hover table-striped tablesorter">
-          <thead>
-            <tr>
-              
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-          <tbody>
-            
-          </tbody>
-        </table>
-      </div>
+      If Reporter:
+        If out of window: 
+          show info about window - 7-10PM. 
+          Show previous report?
+          Show countdown?
+          Show self-report & feedback stats?
+        If in window:
+          If already reported:
+            If not reviewed: Show report one side, with edit button
+            If not reviewed: Show report one side, and feedback on another
+          Else:
+            Show options for new report (form)
+
+      If Reviewer:
+        If out of window: 
+          show info about windows - 7-10PM and 10-11PM.
+          Show previous feedback?
+          Show countdown?
+          Show feedback stats?
+        If in Window1:
+          If has not reviewed anyone:
+            Show list of unreviewed reports with button to review any
+            Show info for window2
+          If has already reviewed someone:
+            Show info about window2
+        If in window2:
+          Show list of unreviewed reports with button to review anyss
+
       </div>
     </div>
 </div>
