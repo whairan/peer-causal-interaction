@@ -16,11 +16,8 @@ class Ability
       can :manage, :all
       can :access, :rails_admin       # only allow admin users to access Rails Admin
       can :dashboard
-
-    elsif user.supervisor_role?
-      #can :manage, Trial
-
-     else
+      
+    else
       can :read, :all
     end
 

@@ -115,9 +115,12 @@
 	        <div class = "row">
 	          <div class="form-group">
 	            
-	            <div class="col-md-12 stpad">
+	            <div class="col-md-6 stpad">
 	                <%= f.email_field :email, class: "form-control ", placeholder:"Email",:autocomplete => "off" %>
 	            </div>
+	            <div class="col-md-6 stpad">
+                  <%= f.select :self_reporter, options_for_select([["Self Reporter",true],["Reviewer",false]],:selected=>true),{}, {:class => 'form-control'} %>
+              </div>
 	          </div>
 	        </div>
 	        <div class = "row">

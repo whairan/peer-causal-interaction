@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :feedbacks
+  resources :reports
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   get 'users/show'

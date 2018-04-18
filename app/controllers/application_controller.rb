@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     if request.env["HTTP_REFERER"].present?
-    redirect_to :back, :alert => "Either you are not logged in or your account is not authorized to access this page."
+      redirect_to :back, :alert => "Either you are not logged in or your account is not authorized to access this page."
     else
-    redirect_to "/", :alert => "Either you are not logged in or your account is not authorized to access this page."
+      redirect_to "/", :alert => "Either you are not logged in or your account is not authorized to access this page."
     end
   end
 
@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
 
   #Allow additional parameters
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :username, :image_url])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :username, :image_url])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :username,:self_reporter])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :username,:self_reporter])
   end
 end

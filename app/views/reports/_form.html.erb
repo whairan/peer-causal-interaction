@@ -1,0 +1,57 @@
+<%= form_for(report) do |f| %>
+  <% if report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
+
+      <ul>
+      <% report.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :attendance %>
+    <%= f.number_field :attendance %>
+  </div>
+
+  <div class="field">
+    <%= f.label :assignments %>
+    <%= f.number_field :assignments %>
+  </div>
+
+  <div class="field">
+    <%= f.label :participation %>
+    <%= f.number_field :participation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sleep %>
+    <%= f.number_field :sleep %>
+  </div>
+
+  <div class="field">
+    <%= f.label :exercise %>
+    <%= f.number_field :exercise %>
+  </div>
+
+  <div class="field">
+    <%= f.label :meals %>
+    <%= f.number_field :meals %>
+  </div>
+
+  <div class="field">
+    <%= f.label :feedback_id %>
+    <%= f.text_field :feedback_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
