@@ -4,10 +4,96 @@
   <%= render "partials/flash" %>
   <div class="panel panel-primary">
       <div class="panel-heading">
-        <h4 class="panel-title"><i class="fa fa-train" aria-hidden="true"></i> Welcome to MCI 
+        <h4 class="panel-title"><i class="fa fa-train" aria-hidden="true"></i> <%= "Welcome #{@user.first_name}. You're registered as a #{@user.self_reporter ? 'Self-Reporter' : 'Reviewer'}" %>
         </h4>
       </div>
       <div class="panel-body">
+        <% if @user.self_reporter %>
+          <% if @todays_report %>
+            <div class="alert alert-success" role="alert"><strong>TODAY'S REPORT:</strong> Submitted.</div>
+          <% else %>
+            <div class="alert alert-danger" role="alert"><strong>TODAY'S REPORT:</strong> Not Submitted.</div>
+          <% end %>
+
+          <% if Time.now.between?(@sevenPM,@tenPM) %>
+              <% if @todays_report %>
+
+                <div class="row">
+                  <div class="col-xs-6">
+                    <div class="panel panel-success">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">TODAY'S REPORT</h3>
+                      </div>
+                      <div class="panel-body">
+                        Render @todays_report
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-xs-6">
+                  <div class="panel panel-success">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">TODAY'S REVIEW/FEEDBACK</h3>
+                      </div>
+                      <div class="panel-body">
+                        Render @todays_feedbacks.last
+                      </div>
+                    </div>
+                </div>
+              </div>
+                
+            <% else %>
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">SUBMIT A REPORT FOR TODAY</h3>
+                </div>
+                <div class="panel-body">
+                  <%= render "reports/form", report: Report.new %>
+                </div>
+              </div>
+            <% end %>
+              
+          <% else %>
+            <div class="jumbotron">
+              <h1>Show Countdown to 7PM</h1>
+              <h3>You can submit a new report between 7:00PM and 10:00PM every week day.</h3>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="alert alert-info" role="alert"><strong>REVIEWS SUBMITTED TODAY: <%= @todays_feedbacks.count %></strong></div>
+
+          <% if Time.now.between?(@sevenPM,@tenPM) %>
+            <% if @todays_feedbacks.any? %>
+              <div class="jumbotron">
+                <h1>Show Countdown to 10PM</h1>
+                <h3>Thank You. You can submit additional reviews between 10:00PM and 11:00PM every week day.</h3>
+              </div>
+            <% else %>
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">SUBMIT A NEW FEEDBACK</h3>
+                </div>
+                <div class="panel-body">
+                  List of Reviewable Reports
+                </div>
+              </div>
+            <% end %>
+          <% elsif Time.now.between?(@sevenPM,@elevenPM) %>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">REVIEW ADDITIONAL REPORTS</h3>
+                </div>
+                <div class="panel-body">
+                  List of Reviewable Reports
+                </div>
+              </div>
+          <% else %>
+            <div class="jumbotron">
+              <h1>Show Countdown to 7PM</h1>
+              <h3>You can submit reviews between 7:00PM and 11:00PM every week day.</h3>
+            </div>
+          <% end %>
+
+        <% end %>
       If Reporter:</br>
       __Show status for today</br>
       __If out of window: </br>
