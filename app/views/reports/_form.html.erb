@@ -1,57 +1,43 @@
-<%= form_for(report) do |f| %>
-  <% if report.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
 
-      <ul>
-      <% report.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+
+<%= form_for(report) do |f| %>
+  
+  <% if report.errors.any? %>
+    <%= render partial: "partials/create_errors", locals: {object: report, name:"report"} %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Class Attendance</span>
+    <%= f.select :attendance, options_for_select([["Did you attend all classes today?",nil],["YES",2],["SOME",1],["NONE",0],["No Classes Today",-1]],:selected=>report.attendance),{}, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :attendance %>
-    <%= f.number_field :attendance %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Assignments</span>
+    <%= f.select :assignments, options_for_select([["Did you complete your assignments?",nil],["YES",2],["SOME",1],["NONE",0],["No Assignments Today",-1]],:selected=>report.assignments),{}, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :assignments %>
-    <%= f.number_field :assignments %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Class Participation</span>
+    <%= f.select :participation, options_for_select([["Did you participate in classes?",nil],["YES",2],["SOME",1],["NO",0],["No Classes Today",-1]],:selected=>report.participation),{}, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :participation %>
-    <%= f.number_field :participation %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Sleep</span>
+    <%= f.select :sleep, options_for_select([["How much sleep did you get last night?",nil],["9+ Hrs",2],["7-8 Hrs",1],["4-7 Hrs",0],["4- Hrs",-1]],:selected=>report.sleep),{}, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :sleep %>
-    <%= f.number_field :sleep %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Exercise</span>
+    <%= f.select :exercise, options_for_select([["How much did you exercise?",nil],["20+ Minutes",1],["15-20 Minutes",0],["15- Minutes",-1]],:selected=>report.exercise),{}, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :exercise %>
-    <%= f.number_field :exercise %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Meals</span>
+    <%= f.select :meals, options_for_select([["How many meals did you have?",nil],["5+ Meals",2],["3-5 Meals",1],["2 Meals",0],["1- Meals",-1]],:selected=>report.meals),{}, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :meals %>
-    <%= f.number_field :meals %>
-  </div>
-
-  <div class="field">
-    <%= f.label :feedback_id %>
-    <%= f.text_field :feedback_id %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <br>
+  <div class="text-center stpad">
+    <button role="button" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-send"></i> Submit</button>
   </div>
 <% end %>

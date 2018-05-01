@@ -1,5 +1,7 @@
 class ReportsController < ApplicationController
+  before_action :set_user
   before_action :set_report, only: [:show, :edit, :update, :destroy]
+
 
   # GET /reports
   # GET /reports.json
@@ -25,10 +27,11 @@ class ReportsController < ApplicationController
   # POST /reports.json
   def create
     @report = Report.new(report_params)
+    @report.user_id = @user.id
 
     respond_to do |format|
       if @report.save
-        format.html { redirect_to @report, notice: 'Report was successfully created.' }
+        format.html { redirect_to user_root_url, notice: 'Report was successfully created.' }
         format.json { render :show, status: :created, location: @report }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class ReportsController < ApplicationController
   def update
     respond_to do |format|
       if @report.update(report_params)
-        format.html { redirect_to @report, notice: 'Report was successfully updated.' }
+        format.html { redirect_to user_root_url, notice: 'Report was successfully updated.' }
         format.json { render :show, status: :ok, location: @report }
       else
         format.html { render :edit }
@@ -65,6 +68,11 @@ class ReportsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_report
       @report = Report.find(params[:id])
+    end
+
+    #Set the current user before anything else
+    def set_user
+      @user = current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

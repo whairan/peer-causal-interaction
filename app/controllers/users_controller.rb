@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 		@todays_report = nil
 		@todays_feedbacks = []
 		if @user.self_reporter
+			@page = params[:page]
 			@todays_report = Report.where(:user_id=>@user.id,:created_at=>@sevenPM..@tenPM).first
 			if @todays_report
 				@feedback = @todays_report.feedback
@@ -17,8 +18,8 @@ class UsersController < ApplicationController
 		else
 			@elevenPM = Time.now.change(:hour=>23, :minute => 0, :second=>0)
 			@todays_feedbacks = Feedback.where(:user_id=>@user.id,:created_at=>@sevenPM..@elevenPM)
+			@unreviewed_reports = Report.where(feedback_id:nil,created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
 		end
-		
 	end
 
 
@@ -26,7 +27,6 @@ class UsersController < ApplicationController
 
 	#Set the current user before anything else
 	def set_user
-		@active = "user"
 		@user = current_user
 	end
 

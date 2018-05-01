@@ -3,3 +3,18 @@
 <%= render 'form', feedback: @feedback %>
 
 <%= link_to 'Back', feedbacks_path %>
+
+<%= render partial: "partials/devise_navbar" %>
+
+<div class="container content page-wrapper pagepad">
+  <%= render "partials/flash" %>
+  <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title"><i class="fa fa-check-square-o" aria-hidden="true"></i> NEW FEEDBACK</h4>
+      </div>
+      <div class="panel-body">
+        <%= render 'form', feedback: @feedback %>
+      </div>
+    </div>
+</div>
+
