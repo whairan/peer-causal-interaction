@@ -66,6 +66,32 @@
               <h1>Show Countdown to 7PM</h1>
               <h3>You can submit a new report between 7:00PM and 10:00PM every week day.</h3>
             </div>
+            <% if @latest_report %>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <div class="panel panel-success">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">YOUR PREVIOUS REPORT: <%=@latest_report.created_at.strftime("%m/%d/%Y at %H:%M") %></h3>
+                      </div>
+                      <div class="panel-body">
+                          <%= render @latest_report %>
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-xs-6">
+                  <div class="panel panel-primary">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">YOUR PREVIOUS FEEDBACK: <%=@latest_report.feedback.created_at.strftime("%m/%d/%Y at %H:%M") %></h3>
+                      </div>
+                      <div class="panel-body">
+                        <%= render @latest_report.feedback %>
+                      </div>
+                    </div>
+                </div>
+              </div>
+                
+            <% end %>
+
           <% end %>
         <% else %>
           <div class="alert alert-info" role="alert"><strong>REVIEWS SUBMITTED TODAY: <%= @todays_feedbacks.count %></strong></div>
@@ -101,38 +127,7 @@
               <h3>You can submit reviews between 7:00PM and 11:00PM every week day.</h3>
             </div>
           <% end %>
-
         <% end %>
-      If Reporter:</br>
-      __Show status for today</br>
-      __If out of window: </br>
-      ____show info about window - 7-10PM. </br>
-      ____Show previous report?</br>
-      ____Show countdown?</br>
-      ____Show self-report & feedback stats?</br>
-      __If in window:</br>
-      ____If already reported:</br>
-      ______If not reviewed: Show report one side, with edit button</br>
-      ______If not reviewed: Show report one side, and feedback on another</br>
-      ____Else:</br>
-      ______Show options for new report (form)</br>
-
-      If Reviewer:</br>
-      __Show stats for today.</br>
-      __If out of window: </br>
-      ____show info about windows - 7-10PM and 10-11PM.</br>
-      ____Show previous feedback?</br>
-      ____Show countdown?</br>
-      ____Show feedback stats?</br>
-      __If in Window1:</br>
-      ____If has not reviewed anyone:</br>
-      ______Show list of unreviewed reports with button to review any</br>
-      ______Show info for window2</br>
-      ____If has already reviewed someone:</br>
-      ______Show info about window2</br>
-      __If in window2:</br>
-      ____Show list of unreviewed reports with button to review any</br>
-
       </div>
     </div>
 </div>

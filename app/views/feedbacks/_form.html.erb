@@ -1,57 +1,47 @@
-<%= form_for(feedback) do |f| %>
-  <% if feedback.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
 
-      <ul>
-      <% feedback.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= form_for(feedback) do |f| %>
+  
+  <% if feedback.errors.any? %>
+    <%= render partial: "partials/create_errors", locals: {object: feedback, name:"feedback"} %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
+  <%= f.hidden_field :report_id,:value=>@report.id %>
+  <%= f.hidden_field :user_id,:value=>@user.id %>
+
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Class Attendance</span>
+    <%= f.select :attendance, options_for_select([["Select feedback ...",nil],["GOOD",1],["OKAY",0],["POOR",-1]],:selected=>feedback.attendance),{}, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :attendance %>
-    <%= f.number_field :attendance %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Assignments</span>
+    <%= f.select :assignments, options_for_select([["Select feedback ...",nil],["GOOD",1],["OKAY",0],["POOR",-1]],:selected=>feedback.assignments),{}, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :assignments %>
-    <%= f.number_field :assignments %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Class Participation</span>
+    <%= f.select :participation, options_for_select([["Select feedback ...",nil],["GOOD",1],["OKAY",0],["POOR",-1]],:selected=>feedback.participation),{}, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :participation %>
-    <%= f.number_field :participation %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Sleep</span>
+    <%= f.select :sleep, options_for_select([["Select feedback ...",nil],["GOOD",1],["OKAY",0],["POOR",-1]],:selected=>feedback.sleep),{}, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :sleep %>
-    <%= f.number_field :sleep %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Exercise</span>
+    <%= f.select :exercise, options_for_select([["Select feedback ...",nil],["GOOD",1],["OKAY",0],["POOR",-1]],:selected=>feedback.exercise),{}, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :exercise %>
-    <%= f.number_field :exercise %>
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Meals</span>
+    <%= f.select :meals, options_for_select([["Select feedback ...",nil],["GOOD",1],["OKAY",0],["POOR",-1]],:selected=>feedback.meals),{}, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :meals %>
-    <%= f.number_field :meals %>
-  </div>
-
-  <div class="field">
-    <%= f.label :report_id %>
-    <%= f.text_field :report_id %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <br>
+  <div class="text-center stpad">
+    <a class="btn btn-default" href="<%= user_root_url %>"><i class="fa fa-reply"></i> Cancel</a>
+    <button role="button" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-send"></i> Submit</button>
   </div>
 <% end %>
+

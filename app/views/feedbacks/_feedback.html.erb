@@ -1,0 +1,72 @@
+<div class="panel panel-primary">
+	<div class="panel-body">
+	
+		<div class="row">
+			<div class="col-xs-4">Class Attendance: </div>
+			<div class="col-xs-8">
+			  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Class Attendance">
+				  <button type="button" <%= "class='btn btn-success active'".html_safe if feedback.attendance==1 %> class='btn btn-default'}>GOOD</button>
+				  <button type="button" <%= "class='btn btn-info active'".html_safe if feedback.attendance==0 %> class='btn btn-default'}>OKAY</button>
+				  <button type="button" <%= "class='btn btn-danger active'".html_safe if feedback.attendance==-1 %> class='btn btn-default'}>POOR</button>
+				</div></br>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-4">Assignments: </div>
+			<div class="col-xs-8">
+			  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Assignments">
+				  <button type="button" <%= "class='btn btn-success active'".html_safe if feedback.assignments==1 %> class='btn btn-default'}>GOOD</button>
+				  <button type="button" <%= "class='btn btn-info active'".html_safe if feedback.assignments==0 %> class='btn btn-default'}>OKAY</button>
+				  <button type="button" <%= "class='btn btn-danger active'".html_safe if feedback.assignments==-1 %> class='btn btn-default'}>POOR</button>
+				</div></br>
+			</div>
+		</div>	
+
+		<div class="row">
+			<div class="col-xs-4">Class Participation: </div>
+			<div class="col-xs-8">
+			  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Class Participation">
+				  <button type="button" <%= "class='btn btn-success active'".html_safe if feedback.participation==1 %> class='btn btn-default'}>GOOD</button>
+				  <button type="button" <%= "class='btn btn-info active'".html_safe if feedback.participation==0 %> class='btn btn-default'}>OKAY</button>
+				  <button type="button" <%= "class='btn btn-danger active'".html_safe if feedback.participation==-1 %> class='btn btn-default'}>POOR</button>
+				</div></br>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-xs-4">Sleep: </div>
+			<div class="col-xs-8">
+			  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Sleep">
+				  <button type="button" <%= "class='btn btn-success active'".html_safe if feedback.sleep==1 %> class='btn btn-default'}>GOOD</button>
+				  <button type="button" <%= "class='btn btn-info active'".html_safe if feedback.sleep==0 %> class='btn btn-default'}>OKAY</button>
+				  <button type="button" <%= "class='btn btn-danger active'".html_safe if feedback.sleep==-1 %> class='btn btn-default'}>POOR</button>
+				</div></br>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-4">Exercise: </div>
+			<div class="col-xs-8">
+			  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Exercise">
+				  <button type="button" <%= "class='btn btn-success active'".html_safe if feedback.exercise==1 %> class='btn btn-default'}>GOOD</button>
+				  <button type="button" <%= "class='btn btn-info active'".html_safe if feedback.exercise==0 %> class='btn btn-default'}>OKAY</button>
+				  <button type="button" <%= "class='btn btn-danger active'".html_safe if feedback.exercise==-1 %> class='btn btn-default'}>POOR</button>
+				</div></br>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-4">Meals: </div>
+			<div class="col-xs-8">
+			  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Meals">
+				  <button type="button" <%= "class='btn btn-success active'".html_safe if feedback.meals==1 %> class='btn btn-default'}>GOOD</button>
+				  <button type="button" <%= "class='btn btn-info active'".html_safe if feedback.meals==0 %> class='btn btn-default'}>OKAY</button>
+				  <button type="button" <%= "class='btn btn-danger active'".html_safe if feedback.meals==-1 %> class='btn btn-default'}>POOR</button>
+				</div></br>
+			</div>
+		</div>
+	  
+	</div>
+</div>

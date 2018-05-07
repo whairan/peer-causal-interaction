@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 	
 	def show
 		@sevenPM = Time.now.change(:hour=>19, :minute => 0, :second=>0)
-		@tenPM = Time.now.change(:hour=>22, :minute => 0, :second=>0)
+		@tenPM = Time.now.change(:hour=>21, :minute => 0, :second=>0)
 		@todays_report = nil
 		@todays_feedbacks = []
 		if @user.self_reporter
@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 			if @todays_report
 				@feedback = @todays_report.feedback
 			end
+			@latest_report = Report.where(:user_id=>@user.id).last
 		else
 			@elevenPM = Time.now.change(:hour=>23, :minute => 0, :second=>0)
 			@todays_feedbacks = Feedback.where(:user_id=>@user.id,:created_at=>@sevenPM..@elevenPM)

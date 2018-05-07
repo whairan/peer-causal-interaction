@@ -1,50 +1,77 @@
 <div class="panel panel-primary">
 	<div class="panel-body">
-		Class Attendance: 
-	  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Class Attendance">
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.attendance==2 %> class='btn btn-default'}>YES</button>
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.attendance==1 %> class='btn btn-default'}>SOME</button>
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.attendance==0 %> class='btn btn-default'}>NONE</button>
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.attendance==-1 %> class='btn btn-default'}>N/A</button>
-		</div></br>
+	
+		<div class="row">
+			<div class="col-xs-4">Class Attendance: </div>
+			<div class="col-xs-8">
+			  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Class Attendance">
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.attendance==2 %> class='btn btn-default'}>YES</button>
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.attendance==1 %> class='btn btn-default'}>SOME</button>
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.attendance==0 %> class='btn btn-default'}>NONE</button>
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.attendance==-1 %> class='btn btn-default'}>N/A</button>
+				</div></br>
+			</div>
+		</div>
 
-		Assignments: 
-	  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Assignments">
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.assignments==2 %> class='btn btn-default'}>YES</button>
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.assignments==1 %> class='btn btn-default'}>SOME</button>
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.assignments==0 %> class='btn btn-default'}>NONE</button>
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.assignments==-1 %> class='btn btn-default'}>N/A</button>
-		</div></br>
+		<div class="row">
+			<div class="col-xs-4">Assignments: </div>
+			<div class="col-xs-8">
+			  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Assignments">
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.assignments==2 %> class='btn btn-default'}>YES</button>
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.assignments==1 %> class='btn btn-default'}>SOME</button>
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.assignments==0 %> class='btn btn-default'}>NONE</button>
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.assignments==-1 %> class='btn btn-default'}>N/A</button>
+				</div></br>
+			</div>
+		</div>	
 
-		Class Participation: 
-	  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Class Participation">
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.participation==2 %> class='btn btn-default'}>YES</button>
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.participation==1 %> class='btn btn-default'}>SOME</button>
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.participation==0 %> class='btn btn-default'}>NONE</button>
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.participation==-1 %> class='btn btn-default'}>N/A</button>
-		</div></br>
+		<div class="row">
+			<div class="col-xs-4">Class Participation: </div>
+			<div class="col-xs-8">
+			  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Class Participation">
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.participation==2 %> class='btn btn-default'}>YES</button>
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.participation==1 %> class='btn btn-default'}>SOME</button>
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.participation==0 %> class='btn btn-default'}>NONE</button>
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.participation==-1 %> class='btn btn-default'}>N/A</button>
+				</div></br>
+			</div>
+		</div>
 
-		Sleep: 
-	  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Sleep">
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.sleep==2 %> class='btn btn-default'}>9+ Hrs</button>
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.sleep==1 %> class='btn btn-default'}>7-8 Hrs</button>
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.sleep==0 %> class='btn btn-default'}>4-7 Hrs</button>
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.sleep==-1 %> class='btn btn-default'}>4- Hrs</button>
-		</div></br>
 
-		Exercise: 
-	  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Exercise">
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.exercise==1 %> class='btn btn-default'}>20+ Mnts</button>
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.exercise==0 %> class='btn btn-default'}>15-20 Mnts</button>
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.exercise==-1 %> class='btn btn-default'}>15- Mnts</button>
-		</div></br>
+		<div class="row">
+			<div class="col-xs-4">Sleep: </div>
+			<div class="col-xs-8">
+			  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Sleep">
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.sleep==2 %> class='btn btn-default'}>9+ Hrs</button>
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.sleep==1 %> class='btn btn-default'}>7-8 Hrs</button>
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.sleep==0 %> class='btn btn-default'}>4-7 Hrs</button>
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.sleep==-1 %> class='btn btn-default'}>4- Hrs</button>
+				</div></br>
+			</div>
+		</div>
 
-		Meals: 
-	  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Meals">
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.meals==2 %> class='btn btn-default'}>5+ Meals</button>
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.meals==1 %> class='btn btn-default'}>3-5 Meals</button>
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.meals==0 %> class='btn btn-default'}>2 Meals</button>
-		  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.meals==-1 %> class='btn btn-default'}>1 Meal</button>
-		</div></br>
+		<div class="row">
+			<div class="col-xs-4">Exercise: </div>
+			<div class="col-xs-8">
+			  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Exercise">
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.exercise==1 %> class='btn btn-default'}>20+ Mnts</button>
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.exercise==0 %> class='btn btn-default'}>15-20 Mnts</button>
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.exercise==-1 %> class='btn btn-default'}>15- Mnts</button>
+				</div></br>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-4">Meals: </div>
+			<div class="col-xs-8">
+			  <div class="btn-group btn-group-xs sbpad display-only" role="group" aria-label="Meals">
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.meals==2 %> class='btn btn-default'}>5+ Meals</button>
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.meals==1 %> class='btn btn-default'}>3-5 Meals</button>
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.meals==0 %> class='btn btn-default'}>2 Meals</button>
+				  <button type="button" <%= "class='btn btn-primary active'".html_safe if report.meals==-1 %> class='btn btn-default'}>1 Meal</button>
+				</div></br>
+			</div>
+		</div>
+	  
 	</div>
 </div>

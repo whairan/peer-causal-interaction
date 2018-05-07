@@ -42,6 +42,15 @@ tbody th {
   margin-bottom: 50px;
 }
 
+.btn-group.display-only button.btn {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.btn-group.display-only {
+  float: center;
+}
+
 
 .btn-outline{
   color:#563d7c;

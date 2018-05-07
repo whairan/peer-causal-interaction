@@ -1,5 +1,6 @@
 class FeedbacksController < ApplicationController
   before_action :set_feedback, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
 
   # GET /feedbacks
   # GET /feedbacks.json
@@ -15,6 +16,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/new
   def new
     @feedback = Feedback.new
+    @report = Report.find(params[:report_id])
   end
 
   # GET /feedbacks/1/edit
@@ -28,7 +30,9 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to @feedback, notice: 'Feedback was successfully created.' }
+        report = Report.find(feedback_params[:report_id])
+        report.update(feedback_id:@feedback.id)
+        format.html { redirect_to user_root_url, notice: 'Feedback was successfully created.' }
         format.json { render :show, status: :created, location: @feedback }
       else
         format.html { render :new }
@@ -42,7 +46,7 @@ class FeedbacksController < ApplicationController
   def update
     respond_to do |format|
       if @feedback.update(feedback_params)
-        format.html { redirect_to @feedback, notice: 'Feedback was successfully updated.' }
+        format.html { redirect_to user_root_url, notice: 'Feedback was successfully updated.' }
         format.json { render :show, status: :ok, location: @feedback }
       else
         format.html { render :edit }
@@ -56,7 +60,7 @@ class FeedbacksController < ApplicationController
   def destroy
     @feedback.destroy
     respond_to do |format|
-      format.html { redirect_to feedbacks_url, notice: 'Feedback was successfully destroyed.' }
+      format.html { redirect_to user_root_url, notice: 'Feedback was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,6 +69,11 @@ class FeedbacksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_feedback
       @feedback = Feedback.find(params[:id])
+    end
+
+    #Set the current user before anything else
+    def set_user
+      @user = current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
