@@ -5,8 +5,8 @@ class UsersController < ApplicationController
 
 	
 	def show
-		@sevenPM = Time.now.change(:hour=>19, :minute => 0, :second=>0)
-		@tenPM = Time.now.change(:hour=>21, :minute => 0, :second=>0)
+		@sevenPM = Time.now.change(:hour=>16, :minute => 0, :second=>0)
+		@tenPM = Time.now.change(:hour=>22, :minute => 0, :second=>0)
 		@todays_report = nil
 		@todays_feedbacks = []
 		if @user.self_reporter
