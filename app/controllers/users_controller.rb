@@ -5,11 +5,12 @@ class UsersController < ApplicationController
 
 	
 	def show
-		@sevenPM = Time.now.change(:hour=>19, :minute => 0, :second=>0)
+		@sevenPM = Time.now.change(:hour=>16, :minute => 0, :second=>0)
 		@tenPM = Time.now.change(:hour=>22, :minute => 0, :second=>0)
 		@todays_report = nil
 		@todays_feedbacks = []
 		if @user.self_reporter
+			#@remaining_time = Time.now + (Time.now.change(:hour=>18, :minute => 0, :second=>0)-)
 			@page = params[:page]
 			@todays_report = Report.where(:user_id=>@user.id,:created_at=>@sevenPM..@tenPM).first
 			if @todays_report

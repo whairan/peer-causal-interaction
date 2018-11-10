@@ -15,6 +15,7 @@
             <div class="alert alert-danger" role="alert"><strong>TODAY'S REPORT:</strong> Not Submitted.</div>
           <% end %>
 
+          <% @time_remaining = @sevenPM.to_f * 1000 %>
           <% if Time.now.between?(@sevenPM,@tenPM) %>
               <% if @todays_report %>
 
@@ -65,8 +66,8 @@
               
           <% else %>
             <div class="jumbotron">
-              <h1>Show Countdown to 7PM</h1>
-              <h3>You can submit a new report between 7:00PM and 10:00PM every week day.</h3>
+              <h1 id='countdown'></h1>
+              <h3>You can submit a new report between 6:00PM and 10:00PM every week day.</h3>
             </div>
             <% if @latest_report %>
                 <div class="row">
@@ -132,11 +133,21 @@
               </div>
           <% else %>
             <div class="jumbotron">
-              <h1>Show Countdown to 7PM</h1>
-              <h3>You can submit reviews between 7:00PM and 11:00PM every week day.</h3>
+              <h1>Show Countdown to 6PM</h1>
+              <h3>You can submit reviews between 6:00PM and 11:00PM every week day.</h3>
             </div>
           <% end %>
         <% end %>
       </div>
     </div>
 </div>
+
+<script>
+  var time_remaining = <%= raw @time_remaining %>;
+  var sevenPM = new Date(time_remaining);
+  $("#countdown").countdown({
+    until: sevenPM,
+    timezone: -5,
+    layout: '<b>{hn} {hl}, {mn} {ml}, {sn} {sl}</b>'
+  }); 
+</script>

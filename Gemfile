@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+#RUBY
 ruby '2.5.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -45,12 +45,16 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'pry-rails'
 
+#https://www.rubydoc.info/gems/jquery-countdown-rails/2.0.2
+gem 'jquery-countdown-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rb-readline', '~> 0.5.3'
 end
 
 group :development do

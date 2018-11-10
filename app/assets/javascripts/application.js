@@ -16,4 +16,5 @@
 //= require data-confirm-modal
 //= require moment
 //= require bootstrap-datetimepicker
+//= require jquery.countdown
 //= require_tree .
