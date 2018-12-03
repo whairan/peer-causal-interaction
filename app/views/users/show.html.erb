@@ -15,7 +15,10 @@
             <div class="alert alert-danger" role="alert"><strong>TODAY'S REPORT:</strong> Not Submitted.</div>
           <% end %>
 
-          <% @time_remaining = @sevenPM.to_f * 1000 %>
+          <% @time_remaining7PM = @sevenPM.to_f * 1000 %>
+          <% @time_remaining10PM = @tenPM.to_f * 1000 %>
+          <% @time_remaining6PM = @sixPM.to_f * 1000 %>
+
           <% if Time.now.between?(@sevenPM,@tenPM) %>
               <% if @todays_report %>
 
@@ -66,7 +69,7 @@
               
           <% else %>
             <div class="jumbotron">
-              <h1 id='countdown'></h1>
+              <h1 id='countdown6PM'></h1>
               <h3>You can submit a new report between 6:00PM and 10:00PM every week day.</h3>
             </div>
             <% if @latest_report %>
@@ -109,7 +112,7 @@
           <% if Time.now.between?(@sevenPM,@tenPM) %>
             <% if @todays_feedbacks.any? %>
               <div class="jumbotron">
-                <h1>Show Countdown to 10PM</h1>
+                <h1 id='countdown10PM'></h1>
                 <h3>Thank You. You can submit additional reviews between 10:00PM and 11:00PM every week day.</h3>
               </div>
             <% else %>
@@ -133,7 +136,7 @@
               </div>
           <% else %>
             <div class="jumbotron">
-              <h1>Show Countdown to 6PM</h1>
+              <h1 id='countdown6PM'></h1>
               <h3>You can submit reviews between 6:00PM and 11:00PM every week day.</h3>
             </div>
           <% end %>
@@ -142,12 +145,33 @@
     </div>
 </div>
 
-<script>
-  var time_remaining = <%= raw @time_remaining %>;
-  var sevenPM = new Date(time_remaining);
-  $("#countdown").countdown({
+<script type="text/javascript" charset="utf-8">
+  
+  var time_remaining7PM = <%= raw @time_remaining7PM %>;
+  var sevenPM = new Date(time_remaining7PM);
+
+  var time_remaining10PM = <%= raw @time_remaining10PM %>;
+  var tenPM = new Date(time_remaining10PM);
+
+  var time_remaining6PM = <%= raw @time_remaining6PM %>;
+  var sixPM = new Date(time_remaining6PM);
+
+  $("#countdown7PM").countdown({
     until: sevenPM,
     timezone: -5,
     layout: '<b>{hn} {hl}, {mn} {ml}, {sn} {sl}</b>'
   }); 
+
+  $("#countdown10PM").countdown({
+    until: tenPM,
+    timezone: -5,
+    layout: '<b>{hn} {hl}, {mn} {ml}, {sn} {sl}</b>'
+  }); 
+
+  $("#countdown6PM").countdown({
+    until: sevenPM,
+    timezone: -5,
+    layout: '<b>{hn} {hl}, {mn} {ml}, {sn} {sl}</b>'
+  }); 
+  
 </script>
