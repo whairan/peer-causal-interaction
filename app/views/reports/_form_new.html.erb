@@ -1,0 +1,75 @@
+<% report = Report.new %>
+
+<form accept-charset="UTF-8" action="/reports" method="post">
+  <% if report.errors.any? %>
+    <%= render partial: "partials/create_errors", locals: {object: report, name:"report"} %>
+  <% end %>
+
+
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Class Attendance: Did you attend all classes today?</span>
+    <div id="radioBtn" class="btn-group">
+      <a class="btn btn-primary active" id="report_attendance" data-toggle="report[attendance]" name="report[attendance]" title="YES" data-title="2>">YES</a>
+      <a class="btn btn-primary active" id="report_attendance" name="report[attendance]" data-toggle="report[attendance]" title="SOME" data-title="1>">SOME</a>
+      <a class="btn btn-primary active" id="report_attendance" name="report[attendance]" data-toggle="report[attendance]" title="NONE" data-title="0>">NONE</a>
+      <a class="btn btn-primary active" id="report_attendance" name="report[attendance]" data-toggle="report[attendance]" title="No Classes Today" data-title="-1>">No Classes Today</a>
+    </div>
+  </div>
+
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Assignments: Did you complete your assignments?</span>
+    <div id="radioBtn" class="btn-group">
+      <a class="btn btn-primary active" id="report_assignments" data-toggle="report[assignments]" name="report[assignments]" title="YES" data-title="2>">YES</a>
+      <a class="btn btn-primary active" id="report_assignments" name="report[assignments]" data-toggle="report[assignments]" title="SOME" data-title="1>">SOME</a>
+      <a class="btn btn-primary active" id="report_assignments" name="report[assignments]" data-toggle="report[assignments]" title="NONE" data-title="0>">NONE</a>
+      <a class="btn btn-primary active" id="report_assignments" name="report[assignments]" data-toggle="report[assignments]" title="No Assignments Today" data-title="-1>">No Assignments Today</a>
+    </div>
+  </div>
+
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Participation: Did you participate in classes today?</span>
+    <div id="radioBtn" class="btn-group">
+      <a class="btn btn-primary active" id="report_participation" data-toggle="report[participation]" name="report[participation]" title="YES" data-title="2>">YES</a>
+      <a class="btn btn-primary active" id="report_participation" name="report[participation]" data-toggle="report[participation]" title="SOME" data-title="1>">SOME</a>
+      <a class="btn btn-primary active" id="report_participation" name="report[participation]" data-toggle="report[participation]" title="NONE" data-title="0>">NONE</a>
+      <a class="btn btn-primary active" id="report_participation" name="report[participation]" data-toggle="report[participation]" title="No Classes Today" data-title="-1>">No Classes Today</a>
+    </div>
+  </div>
+
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Sleep: How much sleep did you get last night?</span>
+    <div id="radioBtn" class="btn-group">
+      <a class="btn btn-primary active" id="report_attendance" data-toggle="report[sleep]" name="report[sleep]" title="YES" data-title="2>">YES</a>
+      <a class="btn btn-primary active" id="report_attendance" name="report[sleep]" data-toggle="report[sleep]" title="SOME" data-title="1>">SOME</a>
+      <a class="btn btn-primary active" id="report_attendance" name="report[sleep]" data-toggle="report[sleep]" title="NONE" data-title="0>">NONE</a>
+      <a class="btn btn-primary active" id="report_attendance" name="report[sleep]" data-toggle="report[sleep]" title="No Classes Today" data-title="-1>">No Classes Today</a>
+    </div>
+  </div>
+
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Exercise: How much did you exercise?</span>
+    <div id="radioBtn" class="btn-group">
+      <a class="btn btn-primary active" id="report_exercise" data-toggle="report[exercise]" name="report[exercise]" title="YES" data-title="2>">YES</a>
+      <a class="btn btn-primary active" id="report_exercise" name="report[exercise]" data-toggle="report[exercise]" title="SOME" data-title="1>">SOME</a>
+      <a class="btn btn-primary active" id="report_exercise" name="report[exercise]" data-toggle="report[exercise]" title="NONE" data-title="0>">NONE</a>
+      <a class="btn btn-primary active" id="report_exercise" name="report[exercise]" data-toggle="report[exercise]" title="No Assignments Today" data-title="-1>">No Assignments Today</a>
+    </div>
+  </div>
+
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Meals: How many meals did you have?</span>
+    <div id="radioBtn" class="btn-group">
+      <a class="btn btn-primary active" id="report_meals" data-toggle="report[meals]" name="report[meals]" title="YES" data-title="2>">YES</a>
+      <a class="btn btn-primary active" id="report_meals" name="report[meals]" data-toggle="report[meals]" title="SOME" data-title="1>">SOME</a>
+      <a class="btn btn-primary active" id="report_meals" name="report[meals]" data-toggle="report[meals]" title="NONE" data-title="0>">NONE</a>
+      <a class="btn btn-primary active" id="report_meals" name="report[meals]" data-toggle="report[meals]" title="No Assignments Today" data-title="-1>">No Assignments Today</a>
+    </div>
+  </div>
+
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <br/>
+  <button role="button" type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;"><i class="glyphicon glyphicon-send"></i> Submit</button>
+
+</form>
+
+
