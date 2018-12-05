@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 		@todays_feedbacks = []
 
 		if @user.self_reporter
-			#@remaining_time = Time.now + (Time.now.change(:hour=>18, :minute => 0, :second=>0)-)
+			# @remaining_time = Time.now + (Time.now.change(:hour=>18, :minute => 0, :second=>0)-)
 			@page = params[:page]
 			@todays_report = Report.where(:user_id=>@user.id,:created_at=>@sevenPM..@tenPM).first
 			if @todays_report
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 			end
 			@latest_report = Report.where(:user_id=>@user.id).last
 		else
-			@elevenPM = Time.now.change(:hour=>16, :minute => 0, :second=>0)
+			@elevenPM = Time.now.change(:hour=>23, :minute => 0, :second=>0)
 			@todays_feedbacks = Feedback.where(:user_id=>@user.id,:created_at=>@sevenPM..@elevenPM)
 			@unreviewed_reports = Report.where(feedback_id:nil,created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
 		end
