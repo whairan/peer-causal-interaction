@@ -38,6 +38,7 @@
     <%= f.select :meals, options_for_select([["Select feedback ...",nil],["GOOD",1],["OKAY",0],["POOR",-1]],:selected=>feedback.meals),{}, {:class => 'form-control'} %>
   </div>
 
+
   <br>
   <div class="text-center stpad">
     <a class="btn btn-default" href="<%= user_root_url %>"><i class="fa fa-reply"></i> Cancel</a>
