@@ -17,9 +17,8 @@
 
           <% @time_remaining7PM = @sevenPM.to_f * 1000 %>
           <% @time_remaining10PM = @tenPM.to_f * 1000 %>
-          <% @time_remaining6PM = @sixPM.to_f * 1000 %>
 
-          <% if Time.now.between?(@sevenPM,@tenPM) %>
+          <% if Time.zone.now.between?(@sevenPM,@tenPM) %>
               <% if @todays_report %>
 
                 <div class="row">
@@ -109,7 +108,7 @@
         <% else %>
           <div class="alert alert-info" role="alert"><strong>REVIEWS SUBMITTED TODAY: <%= @todays_feedbacks.count %></strong></div>
 
-          <% if Time.now.between?(@sevenPM,@tenPM) %>
+          <% if Time.zone.now.between?(@sevenPM,@tenPM) %>
             <% if @todays_feedbacks.any? %>
               <div class="jumbotron">
                 <h1 id='countdown10PM'></h1>
@@ -125,7 +124,7 @@
                 </div>
               </div>
             <% end %>
-          <% elsif Time.now.between?(@sevenPM,@elevenPM) %>
+          <% elsif Time.zone.now.between?(@sevenPM,@elevenPM) %>
             <div class="panel panel-primary">
                 <div class="panel-heading">
                   <h3 class="panel-title">REVIEW ADDITIONAL REPORTS</h3>
@@ -153,7 +152,7 @@
   var time_remaining10PM = <%= raw @time_remaining10PM %>;
   var tenPM = new Date(time_remaining10PM);
 
-  var time_remaining6PM = <%= raw @time_remaining6PM %>;
+  var time_remaining6PM = <%= raw @time_remaining7PM %>;
   var sixPM = new Date(time_remaining6PM);
 
   $("#countdown7PM").countdown({

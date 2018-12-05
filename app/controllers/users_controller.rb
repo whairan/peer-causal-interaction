@@ -6,8 +6,8 @@ class UsersController < ApplicationController
 
 	
 	def show
-		@sevenPM = Time.now.change(:hour=>18, :minute => 0, :second=>0)
-		@tenPM = Time.now.change(:hour=>22, :minute => 0, :second=>0)
+		@sevenPM = Time.zone.now.change(:hour=>18, :minute => 0, :second=>0)
+		@tenPM = Time.zone.now.change(:hour=>23, :minute => 0, :second=>0)
 		@todays_report = nil
 		@todays_feedbacks = []
 
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 			end
 			@latest_report = Report.where(:user_id=>@user.id).last
 		else
-			@elevenPM = Time.now.change(:hour=>23, :minute => 0, :second=>0)
+			@elevenPM = Time.zone.now.change(:hour=>23, :minute => 0, :second=>0)
 			@todays_feedbacks = Feedback.where(:user_id=>@user.id,:created_at=>@sevenPM..@elevenPM)
 			@unreviewed_reports = Report.where(feedback_id:nil,created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
 		end
