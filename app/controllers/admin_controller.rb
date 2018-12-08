@@ -1,8 +1,8 @@
 class AdminController < ApplicationController
-	before_action :authenticate_user!
-	before_action :set_user
+	http_basic_authenticate_with name: "admin", password: "conn-mci"
 
 	def index
+		@reports = Report.all
 	end
 
 
