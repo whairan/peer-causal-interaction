@@ -1,0 +1,38 @@
+<%= render partial: "partials/devise_navbar" %>
+
+<!--                               CONTENT                -->
+<div class="container content page-wrapper pagepad">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h4 class="panel-title"><i class="fa fa-flask" aria-hidden="true"></i> Data <span class="badge"></span></h4>
+    </div>
+    <div class="panel-body">
+      <div class="table-responsive tableItem">
+        <table id="mytable" class="table table-hover table-striped tablesorter">
+          <thead>
+          <tr>
+            <th class="bg-info">U-ID</th>
+            <th class="bg-info">Attendance</th>
+            <th class="bg-info">Assignments</th>
+            <th class="bg-info">Participation</th>
+            <th class="bg-info">Sleep</th>
+            <th class="bg-info">Exercise</th>
+            <th class="bg-info">Meals</th>
+            
+            <th class="bg-warning">Attendance</th>
+            <th class="bg-warning">Assignments</th>
+            <th class="bg-warning">Participation</th>
+            <th class="bg-warning">Sleep</th>
+            <th class="bg-warning">Exercise</th>
+            <th class="bg-warning">Meals</th>
+            <th class="bg-warning">U-ID</th>
+          </tr>
+          </thead>
+          <tbody>
+          <%= render partial: "reports/row", collection:@reports, as: :report %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

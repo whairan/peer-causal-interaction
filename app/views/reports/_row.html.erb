@@ -1,0 +1,22 @@
+
+<% feedback = report.feedback %>
+
+<tr>
+  <td><%= report.user_id %></td>
+  <td><%= report.attendance %></td>
+  <td><%= report.assignments %></td>
+  <td><%= report.participation %></td>
+  <td><%= report.sleep %></td>
+  <td><%= report.exercise %></td>
+  <td><%= report.meals %></td>
+
+  	<% if feedback %>
+	  <td><%= feedback.attendance %></td>
+	  <td><%= feedback.assignments %></td>
+	  <td><%= feedback.participation %></td>
+	  <td><%= feedback.sleep %></td>
+	  <td><%= feedback.exercise %></td>
+	  <td><%= feedback.meals %></td>
+	  <td><%= feedback.user_id %></td>
+	<% end %>
+</tr>
