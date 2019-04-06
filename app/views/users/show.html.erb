@@ -1,4 +1,7 @@
 <%= render partial: "partials/devise_navbar" %>
+<% @time_remaining7PM = @sevenPM.to_f * 1000 %>
+<% @time_remaining10PM = @tenPM.to_f * 1000 %>
+
 
 <div class="container content page-wrapper pagepad">
   <%= render "partials/flash" %>
@@ -15,8 +18,7 @@
             <div class="alert alert-danger" role="alert"><strong>TODAY'S REPORT:</strong> Not Submitted.</div>
           <% end %>
 
-          <% @time_remaining7PM = @sevenPM.to_f * 1000 %>
-          <% @time_remaining10PM = @tenPM.to_f * 1000 %>
+          
 
           <% if Time.zone.now.between?(@sevenPM,@tenPM) %>
               <% if @todays_report %>
@@ -26,7 +28,7 @@
                     <div class="panel panel-success">
                       <div class="panel-heading">
                         <h3 class="panel-title">TODAY'S REPORT
-                          <% if not @todays_report.feedback %>
+                          <% if not (@todays_report.feedback || @page == 'edit')%>
                             <a href="<%= user_root_url(page:'edit')%>" role="button" class="pull-right btn btn-sm btn-primary"><i class="fa fa-edit" aria-hidden="true"></i> Edit Report</a>
                           <% end %>
                         </h3>
@@ -157,19 +159,19 @@
 
   $("#countdown7PM").countdown({
     until: sevenPM,
-    timezone: -5,
+    timezone: -4,
     layout: '<b>{hn} {hl}, {mn} {ml}, {sn} {sl}</b>'
   }); 
 
   $("#countdown10PM").countdown({
     until: tenPM,
-    timezone: -5,
+    timezone: -4,
     layout: '<b>{hn} {hl}, {mn} {ml}, {sn} {sl}</b>'
   }); 
 
   $("#countdown6PM").countdown({
     until: sevenPM,
-    timezone: -5,
+    timezone: -4,
     layout: '<b>{hn} {hl}, {mn} {ml}, {sn} {sl}</b>'
   }); 
   
