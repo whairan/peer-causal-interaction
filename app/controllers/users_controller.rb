@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
 	
 	def show
-		@sevenPM = Time.zone.now.change(:hour=>16, :minute => 0, :second=>0)
+		@sevenPM = Time.zone.now.change(:hour=>18, :minute => 0, :second=>0)
 		@tenPM = Time.zone.now.change(:hour=>22, :minute => 0, :second=>0)
 		@todays_report = nil
 		@todays_feedbacks = []
