@@ -38,6 +38,11 @@
     <%= f.select :meals, options_for_select([["Select feedback ...",nil],["GOOD",1],["OKAY",0],["POOR",-1]],:selected=>feedback.meals),{}, {:class => 'form-control'} %>
   </div>
 
+  <div class="input-group stpad">
+    <span class="input-group-addon addon3">Comments</span>
+    <%= f.text_area :comments, :rows => "2", :class => 'form-control' %>
+  </div>
+
 
   <br>
   <div class="text-center stpad">

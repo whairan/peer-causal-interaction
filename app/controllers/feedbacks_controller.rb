@@ -78,6 +78,6 @@ class FeedbacksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feedback_params
-      params.require(:feedback).permit(:user_id, :attendance, :assignments, :participation, :sleep, :exercise, :meals, :report_id)
+      params.require(:feedback).permit(:user_id, :comments, :attendance, :assignments, :participation, :sleep, :exercise, :meals, :report_id)
     end
 end
