@@ -26,12 +26,12 @@
 
   <div class="input-group stpad">
     <span class="input-group-addon addon3">Exercise</span>
-    <%= f.select :exercise, options_for_select([["How much did you exercise?",nil],["20+ Minutes",1],["15-20 Minutes",0],["15- Minutes",-1]],:selected=>report.exercise),{}, {:class => 'form-control'} %>
+    <%= f.select :exercise, options_for_select([["How much did you exercise?",nil],["20 Minutes or more",1],["15-20 Minutes",0],["Less than 15 Minutes",-1]],:selected=>report.exercise),{}, {:class => 'form-control'} %>
   </div>
 
   <div class="input-group stpad">
     <span class="input-group-addon addon3">Meals</span>
-    <%= f.select :meals, options_for_select([["How many meals did you have?",nil],["5+ Meals",2],["3-5 Meals",1],["2 Meals",0],["1- Meals",-1]],:selected=>report.meals),{}, {:class => 'form-control'} %>
+    <%= f.select :meals, options_for_select([["How many meals did you have?",nil],["5+ Meals",2],["3 Meals",1],["2 Meals",0],["1 Meal or none",-1]],:selected=>report.meals),{}, {:class => 'form-control'} %>
   </div>
 
   <br>
