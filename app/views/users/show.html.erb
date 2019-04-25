@@ -110,23 +110,8 @@
         <% else %>
           <div class="alert alert-info" role="alert"><strong>REVIEWS SUBMITTED TODAY: <%= @todays_feedbacks.count %></strong></div>
 
-          <% if Time.zone.now.between?(@sevenPM,@tenPM) %>
-            <% if @todays_feedbacks.any? %>
-              <div class="jumbotron">
-                <h1 id='countdown10PM'></h1>
-                <h3>Thank You. You can submit additional reviews between 10:00PM and 11:00PM every week day.</h3>
-              </div>
-            <% else %>
-              <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h3 class="panel-title">SUBMIT A NEW FEEDBACK <span class="label label-warning">Unreviewed Reports: <%= @unreviewed_reports.count %></span></h3>
-                </div>
-                <div class="panel-body">
-                  <%= render(partial: "reports/unreviewed_report", collection:@unreviewed_reports, as: :report) || "<p class='text-center'><i class='fa fa-info-circle'></i> NO UNREVIEWED REPORTS AT THIS TIME.</p>".html_safe %>
-                </div>
-              </div>
-            <% end %>
-          <% elsif Time.zone.now.between?(@sevenPM,@elevenPM) %>
+          
+          <% if Time.zone.now.between?(@sevenPM,@elevenPM) %>
             <div class="panel panel-primary">
                 <div class="panel-heading">
                   <h3 class="panel-title">REVIEW ADDITIONAL REPORTS</h3>
