@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<title>test chart</title>
+
+</head>
+<body>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+
+<div id="container" style="height: 400px; min-width: 310px"></div> -->
+
+
+<script type="text/javascript">
+
+Highcharts.chart('container', {
+    title: {
+        text: 'Progress...test'
+    },
+    xAxis: {
+        categories: ['Apples', 'Oranges', 'Pears', 'Bananas', 'Plums']
+    },
+    
+    series: [{
+        type: 'column',
+        name: 'Jane',
+        data: [3, 2, 1, 3, 4]
+    }, {
+        type: 'column',
+        name: 'John',
+        data: [2, 3, 5, 7, 6]
+    }, {
+        type: 'column',
+        name: 'Joe',
+        data: [4, 3, 3, 9, 0]
+    }, {
+        type: 'spline',
+        name: 'Average',
+        data: [3, 2.67, 3, 6.33, 3.33],
+        marker: {
+            lineWidth: 2,
+            lineColor: Highcharts.getOptions().colors[3],
+            fillColor: 'white'
+        }
+    }, ]
+});
+
+// $.getJSON('https://www.highcharts.com/samples/data/aapl-ohlc.json', function (data) {
+
+//     // create the chart
+//     Highcharts.stockChart('container', {
+
+
+//         rangeSelector: {
+//             selected: 1
+//         },
+
+//         title: {
+//             text: 'AAPL Stock Price'
+//         },
+
+//         series: [{
+//             type: 'candlestick',
+//             name: 'AAPL Stock Price',
+//             data: data,
+//             dataGrouping: {
+//                 units: [
+//                     [
+//                         'week', // unit name
+//                         [1] // allowed multiples
+//                     ], [
+//                         'month',
+//                         [1, 2, 3, 4, 6]
+//                     ]
+//                 ]
+//             }
+//         }]
+//     });
+// });
+
+
+
+
+
+</script>
+</body>
+</html>

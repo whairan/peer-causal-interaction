@@ -66,6 +66,40 @@
                   <%= render "reports/form", report: Report.new %>
                 </div>
               </div>
+
+              <% if @latest_report %>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <div class="panel panel-success">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">YOUR PREVIOUS REPORT: <%=@latest_report.created_at.strftime("%m/%d/%Y at %H:%M") %></h3>
+                      </div>
+                      <div class="panel-body">
+                          <%= render @latest_report %>
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-xs-6">
+                  <div class="panel panel-primary">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">YOUR PREVIOUS FEEDBACK: 
+                          <% if @latest_report.feedback %>
+                            <%=@latest_report.feedback.created_at.strftime("%m/%d/%Y at %H:%M") %>
+                          <% end %>
+                          
+                        </h3>
+                      </div>
+                      <div class="panel-body">
+                        <% if @latest_report.feedback %>
+                          <%= render @latest_report.feedback %>
+                        <% end %>
+                      </div>
+                    </div>
+                </div>
+              </div>
+                
+            <% end %>
+
             <% end %>
               
           <% else %>
@@ -133,7 +167,10 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-  
+
+  var reports = <%= raw @reports.to_json %>;
+  console.log(reports);
+
   var time_remaining7PM = <%= raw @time_remaining7PM %>;
   var sevenPM = new Date(time_remaining7PM);
 
